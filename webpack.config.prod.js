@@ -2,15 +2,18 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
 
 module.exports = {
-  mode: "production",
+  mode: 'production',
   entry: path.join(__dirname, "src", 'index.js'),
   output: {
     path: path.join(__dirname, "build")
   },
-  resolve: { modules: [path.resolve(__dirname, "src"), "node_modules"] },
+  resolve: {
+    modules: [path.resolve(__dirname, './src'), 'node_modules'],
+    extensions: ['.js', '.jsx']
+  },
   devServer: {
     contentBase: path.join(__dirname, 'src'),
-    port: 9000,
+    port: 8000,
   },
   optimization: {
     splitChunks: { chunks: "all"}
