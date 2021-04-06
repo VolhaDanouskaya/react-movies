@@ -31,9 +31,6 @@ module.exports = {
       },
     ]
   },
-  optimization: {
-    splitChunks: { chunks: "all" }
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "index.html")
