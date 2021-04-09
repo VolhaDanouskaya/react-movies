@@ -1,13 +1,24 @@
 import "./style.css";
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { StrictMode } from "react";
+import ReactDOM from "react-dom";
+import Layout from "./components/layout/Layout";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import Body from "./components/body/Body";
 
-const HelloWorld = () => {
-    return (
-        <h1>
-            Hello World
-        </h1>
-    );
-}
+const App = () => {
+  return (
+    <Layout>
+      <Header />
+      <Body />
+      <Footer />
+    </Layout>
+  );
+};
 
-ReactDOM.render(<HelloWorld />, document.getElementById("root"));
+ReactDOM.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById("root")
+);

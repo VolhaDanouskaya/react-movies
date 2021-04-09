@@ -1,0 +1,10 @@
+.footer {
+    height: 75px;
+    background-color: #424242;
+}
+
+.logo-footer {
+    position: absolute;
+    max-width: 200px;
+    padding-left: 34%;
+}
