@@ -50,9 +50,7 @@ const movies = [
 ];
 
 const onFilterClick = (genre) => {
-  //filter movies by genres
-  movies.filter( movie => movie.genres.includes(genre));
-  console.log("filter on click invoked");
+  // movies.filter( movie => movie.genres.includes(genre));
 }
 
 const Body = () => {
