@@ -1,0 +1,41 @@
+$white: #a9a9a9;
+$pink: #f65261;
+
+.search-bar {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 0 140px;
+
+  .title {
+    z-index: 1;
+    font-size: 40px;
+    text-transform: uppercase;
+  }
+
+  form {
+    display: flex;
+
+    label {
+      color: $white;
+      font-size: 15px;
+    }
+
+    button {
+      width: 150px;
+      margin-left: 15px;
+      background-color: $pink;
+      color: white;
+    }
+  }
+
+  #search-input {
+    height: 15px;
+    width: 700px;
+    color: $white;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #232323;
+    opacity: 0.7;
+    border-radius: 5px;
+  }
+}

@@ -1,7 +1,7 @@
 import "./body.scss";
 import { Container } from "@material-ui/core";
 import React from "react";
-import MovieList from "./MovieList";
+import MovieList from "./movieList/MovieList";
 import GenresFilter from "./GenresFilter";
 import MoviesSorter from "./MoviesSorter";
 import ErrorBoundary from "../error/ErrorBoundary";
@@ -49,11 +49,17 @@ const movies = [
   },
 ];
 
+const onFilterClick = (genre) => {
+  //filter movies by genres
+  movies.filter( movie => movie.genres.includes(genre));
+  console.log("filter on click invoked");
+}
+
 const Body = () => {
   return (
     <Container className="body" fixed>
       <div className="submenu">
-        <GenresFilter movies={movies} />
+        <GenresFilter movies={movies} onFilterClick={onFilterClick}/>
         <MoviesSorter />
       </div>
       <p className="movies-counter">

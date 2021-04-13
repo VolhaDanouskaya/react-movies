@@ -1,0 +1,46 @@
+$white: #a9a9a9;
+$black: #232323;
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: space-between;
+}
+
+.movie-card {
+  margin: 0 50px 30px 0;
+  float: left;
+}
+
+.movie-card img {
+  height: 360px;
+}
+
+.movie-info {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.info-first-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-release-year {
+  border-style: solid;
+  border-radius: 6px;
+  padding: 4px 8px;
+  border-color: #555555;
+  border-width: 2px;
+  font-size: 13px;
+}
+
+.genre {
+  font-size: 13px;
+}
