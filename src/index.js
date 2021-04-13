@@ -1,4 +1,3 @@
-import "./style.css";
 import React, { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import Layout from "./components/layout/Layout";

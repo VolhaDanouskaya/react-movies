@@ -1,0 +1,117 @@
+$white: #a9a9a9;
+$black: #232323;
+
+.body {
+  position: relative;
+  height: auto;
+  margin-top: 10px;
+  background-color: $black;
+}
+
+.submenu {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #424242;
+  margin: 0 0 0 40px;
+
+  .sort {
+    margin: 20px 20px 10px 0;
+    text-transform: uppercase;
+    display: flex;
+
+    .MuiFormControl-root {
+      flex-direction: row;
+    }
+
+  }
+
+  .sort-form {
+    margin: 0 0 0 10px;
+
+    .MuiSelect-select {
+      color: $white;
+    }
+
+    .MuiSelect-icon {
+      color: #F65261;
+    }
+
+    .MuiInput-underline:after {
+      content: none;
+    }
+
+    .MuiInput-underline:before {
+      content: none;
+    }
+  }
+}
+
+.genres-filter {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0 10px 0;
+  padding-inline-start: 0px;
+  list-style-type: none;
+
+  .item {
+    margin-right: 10px;
+    background-color: $black;
+    border: none;
+    color: $white;
+    text-transform: uppercase;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.movies-counter {
+  margin: 20px 0 20px 40px;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: space-between;
+}
+
+.movie-card {
+  margin: 0 50px 30px 0;
+  float: left;
+}
+
+.movie-card img {
+  height: 360px;
+}
+
+.movie-info {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.info-first-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie-release-year {
+  border-style: solid;
+  border-radius: 6px;
+  padding: 4px 8px;
+  border-color: #555555;
+  border-width: 2px;
+  font-size: 13px;
+}
+
+.genre {
+  font-size: 13px;
+}
