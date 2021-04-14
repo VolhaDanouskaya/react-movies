@@ -47,17 +47,25 @@ const movies = [
       "https://image.tmdb.org/t/p/w500/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg",
     genres: ["Adventure", "Science Fiction", "Action"],
   },
+  {
+    id: 284053,
+    title: "Thor: Ragnarok",
+    release_date: "2017-10-25",
+    poster_path:
+      "https://image.tmdb.org/t/p/w500/rzRwTcFvttcN1ZpX2xv4j3tSdJu.jpg",
+    genres: ["Action", "Adventure", "Fantasy"],
+  },
 ];
 
 const onFilterClick = (genre) => {
   // movies.filter( movie => movie.genres.includes(genre));
-}
+};
 
 const Body = () => {
   return (
     <Container className="body" fixed>
       <div className="submenu">
-        <GenresFilter movies={movies} onFilterClick={onFilterClick}/>
+        <GenresFilter movies={movies} onFilterClick={onFilterClick} />
         <MoviesSorter />
       </div>
       <p className="movies-counter">
