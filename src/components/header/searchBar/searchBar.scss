@@ -1,5 +1,8 @@
 $white: #a9a9a9;
-$pink: #f65261;
+$black: #232323;
+$pink: #F65261;
+$grey: #555555;
+$dark-grey: #424242;
 
 .search-bar {
   width: 900px;
@@ -34,7 +37,7 @@ $pink: #f65261;
     width: 700px;
     color: $white;
     font-family: Arial, Helvetica, sans-serif;
-    background: #232323;
+    background: $black;
     opacity: 0.7;
     border-radius: 5px;
   }

@@ -1,5 +1,7 @@
 $white: #a9a9a9;
 $black: #232323;
+$pink: #F65261;
+$grey: #555555;
 
 .movie-list {
   display: flex;
@@ -9,38 +11,68 @@ $black: #232323;
 }
 
 .movie-card {
+  position: relative;
   margin: 0 50px 30px 0;
-  float: left;
+
+  img {
+    height: 360px;
+    width: 240px;
+  }
+
+  .card-menu-icon {
+    display: none;
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    padding: 6px;
+    background: $black;
+    color: $white;
+
+    &:hover {
+      background: $black;
+      color: $white;
+    }
+  }
+
+  &:hover .card-menu-icon {
+    display: block;
+  }
+
+  .movie-info {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .info-first-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .movie-release-year {
+    border-style: solid;
+    border-radius: 6px;
+    padding: 4px 8px;
+    border-color: $grey;
+    border-width: 2px;
+    font-size: 13px;
+  }
+
+  .genre {
+    font-size: 13px;
+  }
 }
 
-.movie-card img {
-  height: 360px;
+.MuiPaper-root.MuiMenu-paper.MuiPopover-paper {
+  background: $black;
+  color: white;
 }
 
-.movie-info {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
+.MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.card-menu-item:hover {
+  background-color: $pink;
 
-.title {
-  font-size: 16px;
-}
-
-.info-first-row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.movie-release-year {
-  border-style: solid;
-  border-radius: 6px;
-  padding: 4px 8px;
-  border-color: #555555;
-  border-width: 2px;
-  font-size: 13px;
-}
-
-.genre {
-  font-size: 13px;
 }

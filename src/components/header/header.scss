@@ -1,31 +1,35 @@
 $white: #a9a9a9;
-$pink: #f65261;
+$black: #232323;
+$pink: #F65261;
+$grey: #555555;
+$dark-grey: #424242;
 
 .header {
   position: relative;
   height: 400px;
   margin-top: 40px;
-}
 
-.subheader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px 20px 0 40px;
-}
+  .subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 20px 0 40px;
+  }
+  
+  .logo {
+    position: relative;
+    max-width: 150px;
+  }
+  
+  #button-add-movie {
+    background-color: $grey;
+    opacity: 0.7;
+    color: $pink;
+    font-weight: bold;
+    padding: 8px 10px;
+    font-size: 1.2rem;
+  }
 
-.logo {
-  position: relative;
-  max-width: 150px;
-}
-
-#button-add-movie {
-  background-color: #555555;
-  opacity: 0.7;
-  color: $pink;
-  font-weight: bold;
-  padding: 8px 10px;
-  font-size: 1.2rem;
 }
 
 .header::before {
