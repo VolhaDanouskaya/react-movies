@@ -1,18 +1,18 @@
-import React, { Component } from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+import React, { Component } from 'react';
 
 class ErrorBoundary extends Component {
-  
-    constructor(props) {
+  constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
-    console.log({ error, errorInfo });
+  componentDidCatch() {
   }
 
   render() {

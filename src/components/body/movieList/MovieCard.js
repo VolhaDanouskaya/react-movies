@@ -1,13 +1,12 @@
-import "./movies.scss";
-import React from "react";
-import PropTypes from "prop-types";
-import IconButton from "@material-ui/core/IconButton";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
+import './movies.scss';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-const MovieCard = (props) => {
-
+const MovieCard = ({ movie }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -18,15 +17,15 @@ const MovieCard = (props) => {
 
   return (
     <li className="movie-card">
-      <img src={props.movie.poster_path} />
+      <img src={movie.poster_path} alt="" />
       <div className="movie-info">
         <div className="info-first-row">
-          <p className="title">{props.movie.title}</p>
+          <p className="title">{movie.title}</p>
           <p className="movie-release-year">
-            {props.movie.release_date.split("-")[0]}
+            {movie.release_date.split('-')[0]}
           </p>
         </div>
-        <p className="genre">{props.movie.genres.join(", ")}</p>
+        <p className="genre">{movie.genres.join(', ')}</p>
       </div>
       <IconButton
         className="card-menu-icon"
@@ -36,20 +35,20 @@ const MovieCard = (props) => {
       >
         <MoreVertIcon />
       </IconButton>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <MenuItem onClick={handleClose} className="card-menu-item">
-            edit
-          </MenuItem>
-          <MenuItem onClick={handleClose} className="card-menu-item">
-            delete
-          </MenuItem>
-        </Menu>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose} className="card-menu-item">
+          edit
+        </MenuItem>
+        <MenuItem onClick={handleClose} className="card-menu-item">
+          delete
+        </MenuItem>
+      </Menu>
     </li>
   );
 };
@@ -61,7 +60,7 @@ MovieCard.propTypes = {
     poster_path: PropTypes.string,
     release_date: PropTypes.string,
     genres: PropTypes.array,
-  }),
+  }).isRequired,
 };
 
 export default MovieCard;

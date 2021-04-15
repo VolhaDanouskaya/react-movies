@@ -1,19 +1,18 @@
-import React, { Component } from "react";
-import MovieCard from "./MovieCard";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import React from 'react';
+// eslint-disable-next-line sort-imports-es6-autofix/sort-imports-es6
+import MovieCard from './MovieCard';
 
-const MovieList = (props) => {
-  return (
-    <ul className="movie-list">
-      {props.movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
-    </ul>
-  );
+const MovieList = ({ movies }) => (
+  <ul className="movie-list">
+    {movies.map((movie) => (
+      <MovieCard key={movie.id} movie={movie} />
+    ))}
+  </ul>
+);
+
+MovieList.propTypes = {
+  movies: PropTypes.arrayOf(MovieCard).isRequired,
 };
-
-Component.propTypes = {
-  movies: PropTypes.array,
-}
 
 export default MovieList;

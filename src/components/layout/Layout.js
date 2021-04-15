@@ -1,13 +1,11 @@
-import "./layout.scss";
-import React from "react";
-import PropTypes from "prop-types";
+import './layout.scss';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-const Layout = (props) => {
-  return <div className="main-layout">{props.children}</div>;
-};
+const Layout = ({ children }) => <div className="main-layout">{children}</div>;
 
 Layout.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
-}
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
+};
 
 export default Layout;
