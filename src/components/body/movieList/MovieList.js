@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-// eslint-disable-next-line sort-imports-es6-autofix/sort-imports-es6
+
+import PropTypes from 'prop-types';
+
 import MovieCard from './MovieCard';
 
 const MovieList = ({ movies }) => (

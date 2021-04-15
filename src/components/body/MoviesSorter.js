@@ -1,8 +1,9 @@
-import './body.scss';
+import React from 'react';
+
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
-import React from 'react';
 import Select from '@material-ui/core/Select';
+import './body.scss';
 
 const MoviesSorter = () => (
   <>

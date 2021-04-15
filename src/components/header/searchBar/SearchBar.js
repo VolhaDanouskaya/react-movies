@@ -1,7 +1,8 @@
-import './searchBar.scss';
-import Button from '@material-ui/core/Button';
 import React from 'react';
+
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import './searchBar.scss';
 
 const SearchBar = () => (
   <div className="search-bar">

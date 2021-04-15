@@ -1,10 +1,11 @@
-import './movies.scss';
+import React from 'react';
+
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PropTypes from 'prop-types';
-import React from 'react';
+import './movies.scss';
 
 const MovieCard = ({ movie }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);

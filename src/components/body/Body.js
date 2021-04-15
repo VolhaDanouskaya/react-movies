@@ -1,11 +1,13 @@
-import './body.scss';
-import { Container } from '@material-ui/core';
 import React from 'react';
-// eslint-disable-next-line sort-imports-es6-autofix/sort-imports-es6
+
+import { Container } from '@material-ui/core';
+
 import ErrorBoundary from '../error/ErrorBoundary';
+
 import GenresFilter from './GenresFilter';
 import MovieList from './movieList/MovieList';
 import MoviesSorter from './MoviesSorter';
+import './body.scss';
 
 const movies = [
   {

@@ -1,6 +1,7 @@
-import './body.scss';
-import PropTypes from 'prop-types';
 import React from 'react';
+
+import PropTypes from 'prop-types';
+import './body.scss';
 
 const genres = ['All', 'Documentary', 'Comedy', 'Horror', 'Crime'];
 
