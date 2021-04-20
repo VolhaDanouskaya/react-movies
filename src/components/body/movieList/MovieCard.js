@@ -5,15 +5,33 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PropTypes from 'prop-types';
+
+import DeleteDialog from './DeleteDialog';
+import EditDialog from './EditDialog';
+
 import './movies.scss';
 
 const MovieCard = ({ movie }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [openDelete, setOpenDelete] = React.useState(false);
+  const [openEdit, setOpenEdit] = React.useState(false);
+
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const onEditMenuItemClick = () => {
+    handleClose();
+    setOpenEdit(true);
+  };
+
+  const onDeleteMenuItemClick = () => {
+    handleClose();
+    setOpenDelete(true);
   };
 
   return (
@@ -43,12 +61,14 @@ const MovieCard = ({ movie }) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose} className="card-menu-item">
+        <MenuItem onClick={onEditMenuItemClick} className="card-menu-item">
           edit
         </MenuItem>
-        <MenuItem onClick={handleClose} className="card-menu-item">
+        <MenuItem onClick={onDeleteMenuItemClick} className="card-menu-item">
           delete
         </MenuItem>
+        <EditDialog open={openEdit} movie={movie} onClose={() => setOpenEdit(false)} />
+        <DeleteDialog open={openDelete} movieId={movie.id} onClose={() => setOpenDelete(false)} />
       </Menu>
     </li>
   );
@@ -61,6 +81,13 @@ MovieCard.propTypes = {
     poster_path: PropTypes.string,
     release_date: PropTypes.string,
     genres: PropTypes.array,
+    vote_average: PropTypes.number,
+    tagline: PropTypes.string,
+    vote_count: PropTypes.number,
+    overview: PropTypes.string,
+    budget: PropTypes.number,
+    revenue: PropTypes.number,
+    runtime: PropTypes.number,
   }).isRequired,
 };
 

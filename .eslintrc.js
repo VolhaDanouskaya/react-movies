@@ -10,6 +10,7 @@ module.exports = {
     'airbnb',
     'airbnb/hooks',
   ],
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,

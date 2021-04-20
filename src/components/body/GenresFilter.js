@@ -3,12 +3,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './body.scss';
 
-const genres = ['All', 'Documentary', 'Comedy', 'Horror', 'Crime'];
+const genres = ['All', 'Adventure', 'Comedy', 'Drama', 'Fantasy'];
 
 const GenresFilter = (props) => (
   <div className="genres-filter">
     {genres.map((genre) => (
-      <button key={genre} type="button" onClick={() => props.onFilterClick(genre)} className="item">
+      <button
+        key={genre}
+        type="button"
+        onClick={() => props.onFilterClick(genre)}
+        className="item"
+      >
         {genre}
       </button>
     ))}

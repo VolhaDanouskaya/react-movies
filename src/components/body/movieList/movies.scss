@@ -1,6 +1,6 @@
 $white: #a9a9a9;
 $black: #232323;
-$pink: #F65261;
+$pink: #f65261;
 $grey: #555555;
 
 .movie-list {
@@ -74,5 +74,54 @@ $grey: #555555;
 
 .MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.card-menu-item:hover {
   background-color: $pink;
+}
 
+.MuiPaper-root.MuiDialog-paper {
+  width: 600px;
+  background-color: $black;
+  color: #a9a9a9;
+  font-family: Arial, Helvetica, sans-serif;
+
+  .edit-form-content {
+    margin-left: 50px;
+  }
+  .edit-field-name {
+    color: $pink;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+
+  .edit-field {
+    width: 400px;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: $grey;
+    opacity: 0.3;
+    height: 55px;
+    padding: 5px 0 5px 5px;
+  }
+
+  .MuiIconButton-root {
+    color: #a9a9a9;
+    justify-content: flex-end;
+  }
+
+  .MuiTypography-h6 {
+    text-transform: uppercase;
+    font-size: 22px;
+  }
+
+  .MuiTypography-colorTextSecondary {
+    color: #a9a9a9;
+  }
+
+  .MuiDialogActions-spacing {
+    padding: 0 20px 20px 0;
+
+    .MuiButton-textPrimary {
+      background-color: $pink;
+      color: white;
+    }
+  }
 }

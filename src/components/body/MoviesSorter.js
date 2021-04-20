@@ -5,17 +5,21 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import './body.scss';
 
-const MoviesSorter = () => (
+const MoviesSorter = ({ onSortChange }) => (
   <>
     <div className="sort">
       <p>Sort by </p>
       <FormControl className="sort-form">
-        <Select labelId="simple-select" id="simple-select" defaultValue="releaseDate">
-          <MenuItem value="releaseDate" selected>
+        <Select
+          labelId="simple-select"
+          id="simple-select"
+          defaultValue="release_date"
+          onChange={onSortChange}
+        >
+          <MenuItem value="vote_average">Rating</MenuItem>
+          <MenuItem value="release_date" selected>
             Release date
           </MenuItem>
-          <MenuItem value="title">Title</MenuItem>
-          <MenuItem value="rating">Rating</MenuItem>
         </Select>
       </FormControl>
     </div>
