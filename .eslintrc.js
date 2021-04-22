@@ -45,5 +45,6 @@ module.exports = {
         pathGroupsExcludedImportTypes: ['builtin'],
       },
     ],
+    'react/destructuring-assignment': [0, 'always'],
   },
 };

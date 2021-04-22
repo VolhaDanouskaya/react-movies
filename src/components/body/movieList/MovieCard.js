@@ -6,8 +6,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PropTypes from 'prop-types';
 
-import DeleteDialog from './DeleteDialog';
-import EditDialog from './EditDialog';
+import DeleteMovieDialog from './DeleteMovieDialog';
+import EditMovieDialog from './EditMovieDialog';
 
 import './movies.scss';
 
@@ -67,8 +67,16 @@ const MovieCard = ({ movie }) => {
         <MenuItem onClick={onDeleteMenuItemClick} className="card-menu-item">
           delete
         </MenuItem>
-        <EditDialog open={openEdit} movie={movie} onClose={() => setOpenEdit(false)} />
-        <DeleteDialog open={openDelete} movieId={movie.id} onClose={() => setOpenDelete(false)} />
+        <EditMovieDialog
+          open={openEdit}
+          movie={movie}
+          onClose={() => setOpenEdit(false)}
+        />
+        <DeleteMovieDialog
+          open={openDelete}
+          movieId={movie.id}
+          onClose={() => setOpenDelete(false)}
+        />
       </Menu>
     </li>
   );

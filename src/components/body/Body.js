@@ -156,6 +156,12 @@ const moviesData = [
   },
 ];
 
+const sortByReleaseDate = (movies) => movies.sort((a, b) => {
+  const firstDate = new Date(a.release_date);
+  const secondDate = new Date(b.release_date);
+  return firstDate - secondDate;
+});
+
 class Body extends React.Component {
   constructor(props) {
     super(props);
@@ -165,16 +171,16 @@ class Body extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ movies: this.sortByReleaseDate(moviesData) });
+    this.setState({ movies: sortByReleaseDate(moviesData) });
   }
 
   onFilterClick = (genre) => {
-    if (genre === 'All') this.setState({ movies: moviesData });
-    else {
-      this.setState({
-        movies: moviesData.filter((movie) => movie.genres.includes(genre)),
-      });
-    }
+    this.setState({
+      movies:
+        genre === 'All'
+          ? moviesData
+          : moviesData.filter((movie) => movie.genres.includes(genre)),
+    });
   };
 
   onSortChange = (event) => {
@@ -186,21 +192,14 @@ class Body extends React.Component {
           movies: movies.sort((a, b) => a.vote_average - b.vote_average),
         });
         break;
-      case 'release_date': default:
+      case 'release_date':
+      default:
         this.setState({
-          movies: this.sortByReleaseDate(movies),
+          movies: sortByReleaseDate(movies),
         });
         break;
     }
   };
-
-  sortByReleaseDate(movies) {
-    return movies.sort((a, b) => {
-      const firstDate = new Date(a.release_date);
-      const secondDate = new Date(b.release_date);
-      return firstDate - secondDate;
-    });
-  }
 
   render() {
     const { movies } = this.state;

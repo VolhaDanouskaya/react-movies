@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 
 class ErrorBoundary extends Component {
@@ -12,8 +11,7 @@ class ErrorBoundary extends Component {
     return { hasError: true };
   }
 
-  componentDidCatch() {
-  }
+  componentDidCatch() {}
 
   render() {
     if (this.state.hasError) {

@@ -8,35 +8,32 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import PropTypes from 'prop-types';
 
-const DeleteDialog = (props) => {
-  const handleCloseDeleteDialog = () => {
-    props.onClose();
+const DeleteMovieDialog = ({ open, onClose }) => {
+  const onCloseDeleteDialog = () => {
+    onClose();
   };
 
   return (
     <Dialog
       disableBackdropClick
       disableEscapeKeyDown
-      open={props.open}
-      onClose={handleCloseDeleteDialog}
+      open={open}
+      onClose={onCloseDeleteDialog}
       maxWidth="lg"
     >
-      <IconButton aria-label="close" onClick={handleCloseDeleteDialog}>
+      <IconButton aria-label="close" onClick={onCloseDeleteDialog}>
         <CloseIcon />
       </IconButton>
       <DialogTitle id="alert-dialog-title">Delete Movie</DialogTitle>
-      <DialogContent>
+      <DialogContent className="dialog-form-content">
         <DialogContentText id="alert-dialog-description">
           Are you sure you want to delete this movie?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button
-          onClick={handleCloseDeleteDialog}
-          color="primary"
-          autoFocus
-        >
+        <Button onClick={onCloseDeleteDialog} color="primary" size="large">
           Confirm
         </Button>
       </DialogActions>
@@ -44,4 +41,9 @@ const DeleteDialog = (props) => {
   );
 };
 
-export default DeleteDialog;
+DeleteMovieDialog.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
+};
+
+export default DeleteMovieDialog;
