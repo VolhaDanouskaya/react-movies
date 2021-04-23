@@ -1,6 +1,6 @@
 $white: #a9a9a9;
 $black: #232323;
-$pink: #F65261;
+$pink: #f65261;
 $grey: #555555;
 $dark-grey: #424242;
 
@@ -17,59 +17,58 @@ $dark-grey: #424242;
     border-bottom-width: 1px;
     border-bottom-color: $dark-grey;
     margin: 0 0 0 40px;
-  
+
     .sort {
       margin: 20px 20px 10px 0;
       text-transform: uppercase;
       display: flex;
-  
+
       .MuiFormControl-root {
         flex-direction: row;
       }
-  
     }
-  
+
     .sort-form {
       margin: 0 0 0 10px;
-  
+
       .MuiSelect-select {
         color: $white;
       }
-  
+
       .MuiSelect-icon {
         color: $pink;
       }
-  
+
       .MuiInput-underline:after {
         content: none;
       }
-  
+
       .MuiInput-underline:before {
         content: none;
       }
     }
   }
-  
+
   .genres-filter {
     display: flex;
     flex-wrap: wrap;
     margin: 20px 0 10px 0;
     padding-inline-start: 0px;
     list-style-type: none;
-  
+
     .item {
       margin-right: 10px;
       background-color: $black;
       border: none;
       color: $white;
       text-transform: uppercase;
-  
+
       &:focus {
-        outline: none;
+        color: white;
       }
     }
   }
-  
+
   .movies-counter {
     margin: 20px 0 20px 40px;
   }
