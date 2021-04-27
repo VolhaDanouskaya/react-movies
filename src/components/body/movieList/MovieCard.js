@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import React, { useState, useContext } from 'react';
 
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
@@ -6,15 +8,18 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PropTypes from 'prop-types';
 
+import HeaderContext from '../../header/HeaderContext';
+
 import DeleteMovieDialog from './DeleteMovieDialog';
 import EditMovieDialog from './EditMovieDialog';
 
 import './movies.scss';
 
 const MovieCard = ({ movie }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [openDelete, setOpenDelete] = React.useState(false);
-  const [openEdit, setOpenEdit] = React.useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [headerMovieId, setHeaderMovieId] = useContext(HeaderContext);
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -36,7 +41,11 @@ const MovieCard = ({ movie }) => {
 
   return (
     <li className="movie-card">
-      <img src={movie.poster_path} alt="" />
+      <img
+        src={movie.poster_path}
+        alt=""
+        onClick={() => setHeaderMovieId(movie.id)}
+      />
       <div className="movie-info">
         <div className="info-first-row">
           <p className="title">{movie.title}</p>

@@ -35,7 +35,9 @@ const EditMovieDialog = ({ movie, open, onClose }) => {
       <DialogContent className="dialog-form-content">
         <form noValidate autoComplete="off">
           <p className="edit-field-name">Movie ID</p>
-          <p className="edit-field-name" style={{ color: 'white' }}>{movie.id}</p>
+          <p className="edit-field-name" style={{ color: 'white' }}>
+            {movie.id}
+          </p>
           <p className="edit-field-name">Title</p>
           <Input
             type="text"

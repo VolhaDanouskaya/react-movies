@@ -1,14 +1,8 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { Container } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
-import ErrorBoundary from '../error/ErrorBoundary';
-import useSessionStorage from '../hooks/useSessionStorage';
-
-import GenresFilter from './GenresFilter';
-import MovieList from './movieList/MovieList';
-import MoviesSorter from './MoviesSorter';
-import './body.scss';
+import './movieDetails.scss';
 
 const moviesData = [
   {
@@ -157,69 +151,44 @@ const moviesData = [
   },
 ];
 
-const sortByReleaseDate = (movies) => [...movies].sort((a, b) => {
-  const firstDate = new Date(a.release_date);
-  const secondDate = new Date(b.release_date);
-  return firstDate - secondDate;
-});
+const MovieDetails = ({ movieId }) => {
+  const [movie, setMovie] = useState(null);
 
-const Body = () => {
-  const [movies, setMovies] = useState(sortByReleaseDate(moviesData));
-  const [currentFilter, setCurrentFilter] = useSessionStorage('filter');
-  const [currentSort, setCurrentSort] = useSessionStorage('sort');
-
-  const sortedMoviesByReleaseDate = useCallback(
-    () => sortByReleaseDate(movies),
-    [movies],
-  );
-
-  const sortedMoviesByRating = useMemo(
-    () => [...movies].sort((a, b) => b.vote_average - a.vote_average),
-    [movies],
-  );
-
-  const onFilterClick = (genre) => {
-    setMovies(
-      genre === 'All'
-        ? moviesData
-        : moviesData.filter((movie) => movie.genres.includes(genre)),
-    );
-    setCurrentFilter(genre);
-  };
-
-  const onSortChange = (event) => {
-    const { value } = event.target;
-    switch (value) {
-      case 'vote_average':
-        setMovies(sortedMoviesByRating);
-        break;
-      case 'release_date':
-      default:
-        setMovies(sortedMoviesByReleaseDate);
-        break;
-    }
-    setCurrentSort(value);
-  };
+  useEffect(() => {
+    setMovie(moviesData.find((m) => m.id === movieId));
+  }, [movieId]);
 
   return (
-    <Container className="body" fixed>
-      <div className="submenu">
-        <GenresFilter
-          onFilterClick={onFilterClick}
-          selectedFilter={currentFilter}
-        />
-        <MoviesSorter onSortChange={onSortChange} selectedSort={currentSort} />
+    <div className="movie-details">
+      <img src={movie?.poster_path} alt="" className="poster" />
+      <div className="info">
+        <div className="first-row">
+          <h1 className="title">{movie?.title}</h1>
+          <div className="rating">{movie?.vote_average}</div>
+        </div>
+        <div className="tagline">{movie?.tagline}</div>
+        <div className="third-row">
+          <div className="release-date">
+            {movie?.release_date?.split('-')[0]}
+          </div>
+          <div className="runtime">
+            {movie?.runtime}
+            {' '}
+            min
+          </div>
+        </div>
+        <div className="overview">{movie?.overview}</div>
       </div>
-      <p className="movies-counter">
-        <b>{movies.length}</b>
-        {' '}
-        movies found
-      </p>
-      <ErrorBoundary>
-        <MovieList movies={movies} />
-      </ErrorBoundary>
-    </Container>
+    </div>
   );
 };
 
-export default Body;
+MovieDetails.defaultProps = {
+  movieId: null,
+};
+
+MovieDetails.propTypes = {
+  movieId: PropTypes.number,
+};
+
+export default MovieDetails;

@@ -1,0 +1,57 @@
+$white: #a9a9a9;
+$black: #232323;
+$pink: #f65261;
+$grey: #555555;
+$dark-grey: #424242;
+
+.movie-details {
+  display: flex;
+  flex-direction: row;
+
+  .poster {
+    width: 230px;
+    margin: 10px 20px 10px 10px;
+  }
+
+  .info {
+    margin: 0;
+
+    .first-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .title {
+        color: white;
+      }
+
+      .rating {
+        color: $pink;
+        border: 2px solid $white;
+        width: 50px;
+        height: 50px;
+        border-radius: 26px;
+        font-size: 20px;
+        line-height: 50px;
+        text-align: center;
+        margin: 10px;
+      }
+    }
+
+    .third-row {
+      display: flex;
+      flex-direction: row;
+      color: $pink;
+      font-size: 24px;
+      margin: 20px 0;
+
+      .release-date {
+        margin-right: 20px;
+      }
+
+      .runtime {
+        margin-right: 20px;
+      }
+    }
+  }
+}
