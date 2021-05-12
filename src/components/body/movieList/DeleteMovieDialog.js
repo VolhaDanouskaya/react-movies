@@ -10,7 +10,9 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import PropTypes from 'prop-types';
 
-const DeleteMovieDialog = ({ open, onClose }) => {
+const DeleteMovieDialog = ({
+  open, movieId, onClose, onDelete,
+}) => {
   const onCloseDeleteDialog = () => {
     onClose();
   };
@@ -33,7 +35,7 @@ const DeleteMovieDialog = ({ open, onClose }) => {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onCloseDeleteDialog} color="primary" size="large">
+        <Button onClick={() => onDelete(movieId)} color="primary" size="large">
           Confirm
         </Button>
       </DialogActions>
@@ -44,6 +46,7 @@ const DeleteMovieDialog = ({ open, onClose }) => {
 DeleteMovieDialog.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default DeleteMovieDialog;

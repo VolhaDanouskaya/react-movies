@@ -17,6 +17,10 @@ $grey: #555555;
   img {
     height: 360px;
     width: 240px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .card-menu-icon {
@@ -42,10 +46,15 @@ $grey: #555555;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    width: 240px;
   }
 
   .title {
     font-size: 16px;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .info-first-row {

@@ -6,8 +6,8 @@ import MovieCard from './MovieCard';
 
 const MovieList = ({ movies }) => (
   <ul className="movie-list">
-    {movies.map((movie) => (
-      <MovieCard key={movie.id} movie={movie} />
+    {movies?.map((movie) => (
+      <MovieCard key={movie?.id} movie={movie} />
     ))}
   </ul>
 );

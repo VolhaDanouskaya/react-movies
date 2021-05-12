@@ -1,39 +1,42 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'production',
-  entry: path.join(__dirname, "src", 'index.js'),
+  entry: {
+    index: ['babel-polyfill', './index.js'],
+  },
   output: {
-    path: path.join(__dirname, "build")
+    path: path.join(__dirname, 'build'),
   },
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   optimization: {
-    splitChunks: { chunks: "all"}
+    splitChunks: { chunks: 'all' },
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.(css)$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(jpg|jpeg|png|gif)$/,
-        use: ["file-loader"]
+        use: ['file-loader'],
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "src", "index.html")
-    })
-  ]
+      template: path.join(__dirname, 'src', 'index.html'),
+    }),
+  ],
 };

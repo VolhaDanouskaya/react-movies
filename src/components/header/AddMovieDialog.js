@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -13,17 +13,33 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import CloseIcon from '@material-ui/icons/Close';
 import PropTypes from 'prop-types';
 
-const genresArray = ['Adventure', 'Comedy', 'Drama', 'Fantasy'];
+const genresArray = ['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Science Fiction'];
 
-const AddMovieDialog = ({ open, onClose }) => {
+const AddMovieDialog = ({ open, onAdd, onClose }) => {
   const [genres, setGenres] = React.useState([]);
-
+  const [title, setTitle] = useState();
+  const [releaseDate, setReleaseDate] = useState();
+  const [posterPath, setPosterPath] = useState();
+  const [overview, setOverview] = useState();
+  const [runtime, setRuntime] = useState();
   const onCloseAddDialog = () => {
     onClose();
   };
 
   const onChangeGenres = (event) => {
     setGenres(event.target.value);
+  };
+
+  const onSubmitMovie = () => {
+    const newMovie = {
+      title,
+      release_date: releaseDate,
+      genres,
+      poster_path: posterPath,
+      overview,
+      runtime: Number(runtime),
+    };
+    onAdd(newMovie);
   };
 
   return (
@@ -40,13 +56,14 @@ const AddMovieDialog = ({ open, onClose }) => {
       <DialogContent className="dialog-form-content">
         <form noValidate autoComplete="off">
           <p className="edit-field-name">Title</p>
-          <Input type="text" placeholder="Movie Title" className="edit-field" />
+          <Input type="text" placeholder="Movie Title" className="edit-field" onChange={(e) => setTitle(e.target.value)} />
           <p className="edit-field-name">Release Date</p>
-          <Input type="date" placeholder="Select Date" className="edit-field" />
+          <Input type="date" placeholder="Select Date" className="edit-field" onChange={(e) => setReleaseDate(e.target.value)} />
           <p className="edit-field-name">Movie URL</p>
           <Input
             type="text"
             placeholder="Movie URL here"
+            onChange={(e) => setPosterPath(e.target.value)}
             className="edit-field"
           />
           <p className="edit-field-name">Genre</p>
@@ -70,12 +87,14 @@ const AddMovieDialog = ({ open, onClose }) => {
             aria-label="empty textarea"
             placeholder="Overview Here"
             className="edit-field"
+            onChange={(e) => setOverview(e.target.value)}
           />
           <p className="edit-field-name">Runtime</p>
           <Input
             type="text"
             placeholder="Runtime Here"
             className="edit-field"
+            onChange={(e) => setRuntime(e.target.value)}
           />
         </form>
       </DialogContent>
@@ -83,7 +102,7 @@ const AddMovieDialog = ({ open, onClose }) => {
         <Button onClick={onCloseAddDialog} color="secondary" size="large">
           Reset
         </Button>
-        <Button onClick={onCloseAddDialog} color="primary" size="large">
+        <Button onClick={onSubmitMovie} color="primary" size="large">
           Submit
         </Button>
       </DialogActions>

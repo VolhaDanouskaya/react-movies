@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import './body.scss';
 
 const MoviesSorter = ({ onSortChange, selectedSort }) => {
-  const [selected, setSelected] = useState(selectedSort || 'release_date');
+  const selected = 'release_date';
 
   return (
     <div className="sort">
