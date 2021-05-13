@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { Container } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ErrorBoundary from '../error/ErrorBoundary';
@@ -9,6 +10,7 @@ import MoviesService from '../services/MoviesService';
 import { loadMovies } from '../store/moviesActions';
 
 import GenresFilter from './GenresFilter';
+import MovieCard from './movieList/MovieCard';
 import MovieList from './movieList/MovieList';
 import MoviesSorter from './MoviesSorter';
 import './body.scss';
@@ -18,17 +20,14 @@ const Body = ({ movies, dispatch }) => {
   const [currentSort, setCurrentSort] = useSessionStorage('sort');
 
   useEffect(() => {
-    MoviesService.fetchMovies(
-      currentFilter === 'All' ? null : currentFilter,
-      currentSort
-    ).then((res) => dispatch(loadMovies(res.data)));
+    MoviesService.fetchMovies(currentFilter === 'All' ? null : currentFilter, currentSort).then((res) =>
+      dispatch(loadMovies(res.data)),
+    );
   }, []);
 
   const onFilterClick = (genre) => {
     setCurrentFilter(genre);
-    return MoviesService.fetchMovies(genre, currentSort).then((res) =>
-      dispatch(loadMovies(res.data))
-    );
+    return MoviesService.fetchMovies(genre, currentSort).then((res) => dispatch(loadMovies(res.data)));
   };
 
   const onSortChange = (event) => {
@@ -40,10 +39,7 @@ const Body = ({ movies, dispatch }) => {
   return (
     <Container className="body" fixed>
       <div className="submenu">
-        <GenresFilter
-          onFilterClick={onFilterClick}
-          selectedFilter={currentFilter}
-        />
+        <GenresFilter onFilterClick={onFilterClick} selectedFilter={currentFilter} />
         <MoviesSorter onSortChange={onSortChange} selectedSort={currentSort} />
       </div>
       <p className="movies-counter">
@@ -56,9 +52,10 @@ const Body = ({ movies, dispatch }) => {
   );
 };
 
-// Body.propTypes = {
-//   movies: PropTypes.arrayOf(MovieCard).isRequired,
-// };
+Body.propTypes = {
+  movies: PropTypes.arrayOf(MovieCard).isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({ movies: state.movies });
 

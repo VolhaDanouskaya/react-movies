@@ -4,12 +4,7 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'airbnb',
-    'airbnb/hooks',
-  ],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'airbnb', 'airbnb/hooks'],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
@@ -18,15 +13,14 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-    'import',
-  ],
+  plugins: ['react', 'import'],
   rules: {
+    'max-len': [2, 120],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'import/no-unresolved': 'off',
     'click-events-have-key-events': 'off',
+    'implicit-arrow-linebreak': 'below',
     'import/order': [
       'error',
       {

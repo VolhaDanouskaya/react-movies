@@ -61,10 +61,13 @@ const Header = ({ dispatch, headerMovieId }) => {
   );
 };
 
+Header.defaultProps = {
+  headerMovieId: null,
+};
+
 Header.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  headerMovieId: PropTypes.number.isRequired,
-
+  headerMovieId: PropTypes.number,
 };
 
 const mapStateToProps = (state) => ({
