@@ -12,9 +12,8 @@ import MovieDetails from './movieDetails/MovieDetails';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
-import { addMovie } from '../store/moviesActions';
-import MoviesService from '../services/MoviesService';
-import setHeaderMovie from '../store/headerActions';
+import { addMovie } from '../../store/actions/movies';
+import setHeaderMovie from '../../store/actions/header';
 
 import PropTypes from 'prop-types';
 
@@ -22,15 +21,15 @@ import PropTypes from 'prop-types';
 import logo from '/public/images/logo.png';
 import './header.scss';
 
-const Header = ({ dispatch, headerMovieId }) => {
+const Header = ({ setHeaderMovieId, headerMovieId }) => {
   const [openAdd, setOpenAdd] = useState(false);
 
   const onAddMovieClick = () => {
     setOpenAdd(true);
   };
 
-  const onAddMovie = (m) => {
-    MoviesService.addMovieAPI(m).then((newMovie) => dispatch(addMovie(newMovie)));
+  const onAddMovie = (movie) => {
+    addMovie(movie);
     setOpenAdd(false);
   };
 
@@ -39,17 +38,12 @@ const Header = ({ dispatch, headerMovieId }) => {
       <div className="subheader">
         <img className="logo" src={logo} alt="" />
         {headerMovieId ? (
-          <IconButton onClick={() => dispatch(setHeaderMovie(null))}>
+          <IconButton onClick={() => setHeaderMovieId(null)}>
             <SearchIcon fontSize="large" />
           </IconButton>
         ) : (
           <>
-            <Button
-              id="button-add-movie"
-              variant="contained"
-              size="large"
-              onClick={onAddMovieClick}
-            >
+            <Button id="button-add-movie" variant="contained" size="large" onClick={onAddMovieClick}>
               + Add Movie
             </Button>
             <AddMovieDialog open={openAdd} onAdd={onAddMovie} onClose={() => setOpenAdd(false)} />
@@ -66,7 +60,6 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   headerMovieId: PropTypes.number,
 };
 
@@ -74,4 +67,9 @@ const mapStateToProps = (state) => ({
   headerMovieId: state.header,
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({
+  addMovie: (movie) => dispatch(addMovie(movie)),
+  setHeaderMovieId: (id) => dispatch(setHeaderMovie(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

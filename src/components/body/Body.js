@@ -5,9 +5,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ErrorBoundary from '../error/ErrorBoundary';
-import useSessionStorage from '../hooks/useSessionStorage';
-import MoviesService from '../services/MoviesService';
-import { loadMovies } from '../store/moviesActions';
+import useSessionStorage from '../../hooks/useSessionStorage';
+import { loadMovies } from '../../store/actions/movies';
 
 import GenresFilter from './GenresFilter';
 import MovieCard from './movieList/MovieCard';
@@ -15,25 +14,22 @@ import MovieList from './movieList/MovieList';
 import MoviesSorter from './MoviesSorter';
 import './body.scss';
 
-const Body = ({ movies, dispatch }) => {
+const Body = ({ movies, loadMovies }) => {
   const [currentFilter, setCurrentFilter] = useSessionStorage('filter');
   const [currentSort, setCurrentSort] = useSessionStorage('sort');
 
   useEffect(() => {
-    MoviesService.fetchMovies(currentFilter === 'All' ? null : currentFilter, currentSort).then((res) =>
-      dispatch(loadMovies(res.data)),
-    );
+    loadMovies(currentFilter, currentSort);
   }, []);
 
   const onFilterClick = (genre) => {
     setCurrentFilter(genre);
-    return MoviesService.fetchMovies(genre, currentSort).then((res) => dispatch(loadMovies(res.data)));
+    loadMovies(genre, currentSort);
   };
 
-  const onSortChange = (event) => {
-    const { value } = event.target;
-    dispatch(loadMovies(MoviesService.sortMovies(movies, value)));
-    setCurrentSort(value);
+  const onSortChange = (sort) => {
+    setCurrentSort(sort);
+    loadMovies(currentFilter, sort);
   };
 
   return (
@@ -54,9 +50,12 @@ const Body = ({ movies, dispatch }) => {
 
 Body.propTypes = {
   movies: PropTypes.arrayOf(MovieCard).isRequired,
-  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({ movies: state.movies });
 
-export default connect(mapStateToProps)(Body);
+const mapDispatchToProps = (dispatch) => ({
+  loadMovies: (filter, sort) => dispatch(loadMovies(filter, sort)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Body);

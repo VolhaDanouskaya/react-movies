@@ -1,26 +1,22 @@
-import {
-  LOAD_MOVIES,
-  ADD_MOVIE,
-  UPDATE_MOVIE,
-  DELETE_MOVIE,
-} from './actionTypes';
+import { LOAD_MOVIES, ADD_MOVIE, UPDATE_MOVIE, DELETE_MOVIE } from './types';
 
-export const loadMovies = (movies) => ({
+export const loadMovies = (filter, sort) => ({
   type: LOAD_MOVIES,
-  payload: movies,
+  filter,
+  sort,
 });
 
 export const addMovie = (movie) => ({
   type: ADD_MOVIE,
-  payload: movie,
+  movie,
 });
 
 export const updateMovie = (movie) => ({
   type: UPDATE_MOVIE,
-  payload: movie,
+  movie,
 });
 
 export const deleteMovie = (id) => ({
   type: DELETE_MOVIE,
-  payload: id,
+  id,
 });

@@ -6,7 +6,7 @@ import './body.scss';
 const genres = ['All', 'Adventure', 'Comedy', 'Drama', 'Fantasy'];
 
 const GenresFilter = ({ onFilterClick, selectedFilter }) => {
-  const [selected, setSelected] = useState(selectedFilter || genres[0]);
+  const [selected, setSelected] = useState(selectedFilter);
 
   return (
     <div className="genres-filter">

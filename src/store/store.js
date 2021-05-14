@@ -1,8 +1,8 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import headerReducer from './headerReducer';
-import moviesReducer from './moviesReducer';
+import headerReducer from './reducers/header';
+import moviesReducer from './reducers/movies';
 import mySaga from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
