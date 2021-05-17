@@ -3,13 +3,13 @@ import createSagaMiddleware from 'redux-saga';
 
 import headerReducer from './reducers/header';
 import moviesReducer from './reducers/movies';
-import mySaga from './sagas';
+import moviesSagas from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   combineReducers({ movies: moviesReducer, header: headerReducer }),
   applyMiddleware(sagaMiddleware),
 );
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(moviesSagas);
 
 export default store;
