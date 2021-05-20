@@ -14,7 +14,7 @@ import { Field, Form, FormikProvider, ErrorMessage } from 'formik';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-const genresArray = ['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Science Fiction'];
+const genresArray = ['Action', 'Adventure', 'Animation', 'Comedy', 'Drama', 'Family', 'Fantasy', 'Science Fiction'];
 
 const AddMovieDialog = ({ open, onAdd, onClose }) => {
   const [genres, setGenres] = useState([]);
@@ -66,13 +66,13 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
           <DialogContent className="dialog-form-content">
             <p className="edit-field-name">Title</p>
             <Field type="text" name="title" placeholder="Movie Title" className="edit-field" />
-            <ErrorMessage name="title" component="div" className="invalid-feedback" />
+            <ErrorMessage name="title" component="div" className="error" />
             <p className="edit-field-name">Release Date</p>
             <Field type="date" name="release_date" placeholder="Select Date" className="edit-field" />
-            <ErrorMessage name="release_date" component="div" className="invalid-feedback" />
+            <ErrorMessage name="release_date" component="div" className="error" />
             <p className="edit-field-name">Movie URL</p>
             <Field type="text" name="poster_path" placeholder="Movie URL here" className="edit-field" />
-            <ErrorMessage name="poster_path" component="div" className="invalid-feedback" />
+            <ErrorMessage name="poster_path" component="div" className="error" />
             <p className="edit-field-name">Genre</p>
             <Select
               type="text"
@@ -88,13 +88,13 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
                 </MenuItem>
               ))}
             </Select>
-            <ErrorMessage name="genres" component="div" className="invalid-feedback" />
+            <ErrorMessage name="genres" component="div" className="error" />
             <p className="edit-field-name">Overview</p>
             <Field as="textarea" name="overview" placeholder="Overview Here" className="edit-field" />
-            <ErrorMessage name="overview" component="div" className="invalid-feedback" />
+            <ErrorMessage name="overview" component="div" className="error" />
             <p className="edit-field-name">Runtime</p>
             <Field type="number" name="runtime" placeholder="Runtime Here" className="edit-field" />
-            <ErrorMessage name="runtime" component="div" className="invalid-feedback" />
+            <ErrorMessage name="runtime" component="div" className="error" />
           </DialogContent>
           <DialogActions>
             <Button onClick={onCloseAddDialog} color="secondary" size="large">
