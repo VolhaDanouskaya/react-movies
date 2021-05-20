@@ -21,7 +21,7 @@ import PropTypes from 'prop-types';
 import logo from '/public/images/logo.png';
 import './header.scss';
 
-const Header = ({ setHeaderMovieId, headerMovieId }) => {
+const Header = ({ addMovie, setHeaderMovieId, headerMovieId }) => {
   const [openAdd, setOpenAdd] = useState(false);
 
   const onAddMovieClick = () => {

@@ -83,7 +83,7 @@ const MovieCard = ({ movie, updateMovie, deleteMovie, setHeaderMovieId }) => {
 };
 
 MovieCard.propTypes = {
-  movie: PropTypes.exact({
+  movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     poster_path: PropTypes.string,
