@@ -20,7 +20,6 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'import/no-unresolved': 'off',
     'click-events-have-key-events': 'off',
-    'implicit-arrow-linebreak': 'below',
     'import/order': [
       'error',
       {

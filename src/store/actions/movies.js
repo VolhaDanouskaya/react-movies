@@ -13,10 +13,11 @@ import {
   DELETE_MOVIE_FAIL,
 } from './types';
 
-export const loadMovies = (filter, sort) => ({
+export const loadMovies = (filter, sort, query) => ({
   type: LOAD_MOVIES,
   filter,
   sort,
+  query,
 });
 
 export const loadMoviesSuccess = (movies) => ({

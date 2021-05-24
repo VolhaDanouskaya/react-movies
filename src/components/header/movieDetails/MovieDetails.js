@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+
+import MovieService from '../../../services/MoviesService';
 
 import './movieDetails.scss';
 
-const MovieDetails = ({ movies, movieId }) => {
+const MovieDetails = ({ movieId }) => {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    const headerMovie = movies?.find((m) => m.id === movieId);
-    setMovie(headerMovie);
+    console.log(movieId);
+    MovieService.getMovieById(movieId)
+      .then((res) => res.json())
+      .then((resJson) => {
+        console.log(resJson);
+        setMovie(resJson);
+      });
   }, [movieId]);
 
   return (
@@ -23,14 +29,8 @@ const MovieDetails = ({ movies, movieId }) => {
         </div>
         <div className="tagline">{movie?.tagline}</div>
         <div className="third-row">
-          <div className="release-date">
-            {movie?.release_date?.split('-')[0]}
-          </div>
-          <div className="runtime">
-            {movie?.runtime}
-            {' '}
-            min
-          </div>
+          <div className="release-date">{movie?.release_date?.split('-')[0]}</div>
+          <div className="runtime">{movie?.runtime} min</div>
         </div>
         <div className="overview">{movie?.overview}</div>
       </div>
@@ -46,6 +46,4 @@ MovieDetails.propTypes = {
   movieId: PropTypes.number,
 };
 
-const mapStateToProps = (state) => ({ movies: state.movies });
-
-export default connect(mapStateToProps)(MovieDetails);
+export default MovieDetails;

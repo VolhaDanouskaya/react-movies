@@ -15,9 +15,9 @@ import {
   deleteMovieFail,
 } from './actions/movies';
 
-function* getAllMovies({ filter, sort }) {
+function* getAllMovies({ filter, sort, query }) {
   try {
-    const movies = yield call(MoviesService.fetchMovies, filter, sort);
+    const movies = yield call(MoviesService.fetchMovies, filter, sort, query);
     yield put(loadMoviesSuccess(movies.data));
   } catch (e) {
     yield put(loadMoviesFail(e.message));

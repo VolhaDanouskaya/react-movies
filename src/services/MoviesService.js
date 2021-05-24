@@ -1,8 +1,12 @@
 class MoviesService {
   apiURL = 'http://localhost:4000/movies/';
 
-  fetchMovies = (filter, sort) => {
-    return fetch(this.buildUrl(filter, sort)).then((res) => res.json());
+  fetchMovies = (filter, sort, query) => {
+    return fetch(this.buildUrl(filter, sort, query)).then((res) => res.json());
+  };
+
+  getMovieById = (id) => {
+    return fetch(this.apiURL + id);
   };
 
   addMovie = (movie) =>
@@ -25,11 +29,15 @@ class MoviesService {
 
   deleteMovie = (id) => fetch(this.apiURL + id, { method: 'DELETE' });
 
-  buildUrl = (filter, sort) => {
+  buildUrl = (filter, sort, query) => {
+    let url = `${this.apiURL}?sortBy=${sort}&sortOrder=desc`;
     if (filter && filter !== 'All') {
-      return `${this.apiURL}?filter=${filter}&sortBy=${sort}&sortOrder=desc`;
+      url += `?filter=${filter}`;
     }
-    return `${this.apiURL}?sortBy=${sort}&sortOrder=desc`;
+    if (query) {
+      url += `&search=${query}&searchBy=title`;
+    }
+    return url;
   };
 }
 

@@ -8,8 +8,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import setHeaderMovie from '../../../store//actions/header';
 import { deleteMovie, updateMovie } from '../../../store/actions/movies';
 
 import DeleteMovieDialog from './DeleteMovieDialog';
@@ -17,7 +17,7 @@ import UpdateMovieDialog from './UpdateMovieDialog';
 
 import './movies.scss';
 
-const MovieCard = ({ movie, updateMovie, deleteMovie, setHeaderMovieId }) => {
+const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDelete, setOpenDelete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
@@ -52,7 +52,9 @@ const MovieCard = ({ movie, updateMovie, deleteMovie, setHeaderMovieId }) => {
 
   return (
     <li className="movie-card">
-      <img src={movie?.poster_path} alt="" onClick={() => setHeaderMovieId(movie?.id)} />
+      <Link to={`/movies/${movie?.id}`}>
+        <img src={movie?.poster_path} alt="" />
+      </Link>
       <div className="movie-info">
         <div className="info-first-row">
           <p className="title">{movie?.title}</p>
@@ -102,7 +104,6 @@ MovieCard.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   updateMovie: (movie) => dispatch(updateMovie(movie)),
   deleteMovie: (id) => dispatch(deleteMovie(id)),
-  setHeaderMovieId: (id) => dispatch(setHeaderMovie(id)),
 });
 
 export default connect(null, mapDispatchToProps)(MovieCard);
