@@ -90,7 +90,7 @@ MovieCard.propTypes = {
     title: PropTypes.string.isRequired,
     poster_path: PropTypes.string,
     release_date: PropTypes.string,
-    genres: PropTypes.array,
+    genres: PropTypes.arrayOf(PropTypes.string),
     vote_average: PropTypes.number,
     tagline: PropTypes.string,
     vote_count: PropTypes.number,
