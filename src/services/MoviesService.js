@@ -1,13 +1,9 @@
 class MoviesService {
   apiURL = 'http://localhost:4000/movies/';
 
-  fetchMovies = (filter, sort, query) => {
-    return fetch(this.buildUrl(filter, sort, query)).then((res) => res.json());
-  };
+  fetchMovies = (filter, sort, query) => fetch(this.buildUrl(filter, sort, query)).then((res) => res.json());
 
-  getMovieById = (id) => {
-    return fetch(this.apiURL + id);
-  };
+  getMovieById = (id) => fetch(this.apiURL + id);
 
   addMovie = (movie) =>
     fetch(this.apiURL, {

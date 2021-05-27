@@ -1,7 +1,7 @@
 import { Container } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { connect } from 'react-redux';
 
@@ -12,24 +12,18 @@ import MovieDetails from './movieDetails/MovieDetails';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
-import useSessionStorage from '../../hooks/useSessionStorage';
 import { addMovie, loadMovies } from '../../store/actions/movies';
 
-import { Switch, Route, useParams, useHistory } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 /* eslint-disable import/no-absolute-path */
 import logo from '/public/images/logo.png';
 import './header.scss';
 
-const Header = ({ addMovie, searchMovies }) => {
+const Header = ({ addMovie }) => {
   const [openAdd, setOpenAdd] = useState(false);
-  const [currentFilter] = useSessionStorage('filter');
-  const [currentSort] = useSessionStorage('sort');
   const history = useHistory();
-
-  const { headerMovieId } = useParams();
-  // const [movieId, setMovieId] = useState(headerMovieId);
 
   const onAddMovieClick = () => {
     setOpenAdd(true);
@@ -40,59 +34,40 @@ const Header = ({ addMovie, searchMovies }) => {
     setOpenAdd(false);
   };
 
-  const onSearchMovies = (query) => {
-    searchMovies(currentFilter, currentSort, query);
-  };
-
-  // useEffect(() => {
-  //   setMovieId(headerMovieId);
-  // }, [headerMovieId]);
-  console.log('header' + headerMovieId);
   return (
-    <Container className={`header ${headerMovieId ? 'dark' : ''}`} fixed>
-      {/**<div className="subheader">
-        <img className="logo" src={logo} alt="" />
-        <Switch>
-          <Route path="/movies/:headerMovieId">
-            <IconButton onClick={() => history.pushState('/')}>
+    <Container className="header" fixed>
+      <Switch>
+        <Route path="/movies/:movieId">
+          <div className="subheader">
+            <img className="logo" src={logo} alt="" />
+            <IconButton onClick={() => history.push('/')}>
               <SearchIcon fontSize="large" />
             </IconButton>
-          </Route>
-          <Route path="/">
+          </div>
+          <MovieDetails />
+        </Route>
+        <Route path="/">
+          <div className="subheader">
+            <img className="logo" src={logo} alt="" />
             <Button id="button-add-movie" variant="contained" size="large" onClick={onAddMovieClick}>
               + Add Movie
             </Button>
             <AddMovieDialog open={openAdd} onAdd={onAddMovie} onClose={() => setOpenAdd(false)} />
-          </Route>
-        </Switch>
-  </div>**/}
-      <Switch>
-        <Route path="/movies/:headerMovieId">
-          <MovieDetails movieId={Number(headerMovieId)} />
-        </Route>
-        <Route path="/">
-          <SearchBar onSearch={onSearchMovies} />
+          </div>
+          <SearchBar />
         </Route>
       </Switch>
     </Container>
   );
 };
 
-// Header.defaultProps = {
-//   headerMovieId: null,
-// };
-
-// Header.propTypes = {
-//   headerMovieId: PropTypes.number,
-// };
-
-// const mapStateToProps = (state) => ({
-//   headerMovieId: state.header,
-// });
-
 const mapDispatchToProps = (dispatch) => ({
   addMovie: (movie) => dispatch(addMovie(movie)),
   searchMovies: (currentFilter, currentSort, query) => dispatch(loadMovies(currentFilter, currentSort, query)),
 });
+
+Header.propTypes = {
+  addMovie: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(Header);

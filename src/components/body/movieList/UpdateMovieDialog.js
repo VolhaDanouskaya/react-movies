@@ -9,12 +9,10 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import CloseIcon from '@material-ui/icons/Close';
+import { Field, Form, FormikProvider, ErrorMessage, useFormik } from 'formik';
 import PropTypes from 'prop-types';
-import { Field, Form, FormikProvider, ErrorMessage } from 'formik';
-import { useFormik } from 'formik';
-import * as yup from 'yup';
 
-const genresArray = ['Action', 'Adventure', 'Animation', 'Comedy', 'Drama', 'Family', 'Fantasy', 'Science Fiction'];
+import { genresArray, validationSchema, MOVIE_FIELDS } from '../../constants';
 
 const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
   const [genres, setGenres] = useState(movie?.genres || []);
@@ -27,15 +25,6 @@ const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
     setFieldValue('genres', value);
   };
 
-  const validationSchema = yup.object({
-    title: yup.string().required('Title is required'),
-    poster_path: yup.string().url().required('Poster url is required'),
-    release_date: yup.string(),
-    overview: yup.string().required('Overview is required'),
-    runtime: yup.number().required('Runtime is required'),
-    genres: yup.array().min(1).required('Minimum one genre should be selected'),
-  });
-
   const formik = useFormik({
     initialValues: {
       id: movie?.id,
@@ -44,11 +33,11 @@ const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
       poster_path: movie?.poster_path,
       overview: movie?.overview,
       runtime: movie?.runtime,
-      genres: genres,
+      genres,
     },
-    validationSchema: validationSchema,
+    validationSchema,
     values: {
-      genres: genres,
+      genres,
     },
     onSubmit: (fields) => {
       onUpdate(fields);
@@ -69,18 +58,18 @@ const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
               {movie?.id}
             </p>
             <p className="edit-field-name">Title</p>
-            <Field name="title" type="text" className="edit-field" />
-            <ErrorMessage name="title" component="div" className="error" />
+            <Field name={MOVIE_FIELDS.TITLE} type="text" className="edit-field" />
+            <ErrorMessage name={MOVIE_FIELDS.TITLE} component="div" className="error" />
             <p className="edit-field-name">Release Date</p>
-            <Field name="release_date" type="date" className="edit-field" />
-            <ErrorMessage name="release_date" component="div" className="error" />
+            <Field name={MOVIE_FIELDS.RELEASE_DATE} type="date" className="edit-field" />
+            <ErrorMessage name={MOVIE_FIELDS.RELEASE_DATE} component="div" className="error" />
             <p className="edit-field-name">Movie URL</p>
-            <Field name="poster_path" type="text" className="edit-field" />
-            <ErrorMessage name="poster_path" component="div" className="error" />
+            <Field name={MOVIE_FIELDS.POSTER_PATH} type="text" className="edit-field" />
+            <ErrorMessage name={MOVIE_FIELDS.POSTER_PATH} component="div" className="error" />
             <p className="edit-field-name">Genre</p>
             <Select
               type="text"
-              name="genres"
+              name={MOVIE_FIELDS.GENRES}
               className="edit-field"
               value={genres}
               onChange={(event) => onChangeGenres(event.target.value, formik.setFieldValue)}
@@ -92,13 +81,13 @@ const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
                 </MenuItem>
               ))}
             </Select>
-            <ErrorMessage name="genres" component="div" className="error" />
+            <ErrorMessage name={MOVIE_FIELDS.GENRES} component="div" className="error" />
             <p className="edit-field-name">Overview</p>
-            <Field as="textarea" name="overview" aria-label="empty textarea" className="edit-field" />
-            <ErrorMessage name="overview" component="div" className="error" />
+            <Field as="textarea" name={MOVIE_FIELDS.OVERVIEW} aria-label="empty textarea" className="edit-field" />
+            <ErrorMessage name={MOVIE_FIELDS.OVERVIEW} component="div" className="error" />
             <p className="edit-field-name">Runtime</p>
-            <Field name="runtime" type="number" className="edit-field" />
-            <ErrorMessage name="runtime" component="div" className="error" />
+            <Field name={MOVIE_FIELDS.RUNTIME} type="number" className="edit-field" />
+            <ErrorMessage name={MOVIE_FIELDS.RUNTIME} component="div" className="error" />
           </DialogContent>
           <DialogActions>
             <Button onClick={onCloseEditDialog} color="secondary" size="large">

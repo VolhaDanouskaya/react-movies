@@ -40,20 +40,9 @@ $dark-grey: #424242;
   }
 }
 
-.header.dark::after {
-  position: absolute;
-  z-index: 0;
-  content: "";
-  width: calc(100% + 3px);
-  height: calc(100% + 4px);
-  background: rgba(0, 0, 0, 0.5);
-  left: -2px;
-  top: -2px;
-}
-
 .header::before {
   position: absolute;
-  content: "";
+  content: '';
   left: 0;
   top: 0;
   width: 100%;

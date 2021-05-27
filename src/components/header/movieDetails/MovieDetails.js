@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 
 import MovieService from '../../../services/MoviesService';
 
 import './movieDetails.scss';
 
-const MovieDetails = ({ movieId }) => {
+const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
+  const { movieId } = useParams();
 
   useEffect(() => {
-    console.log(movieId);
-    MovieService.getMovieById(movieId)
+    MovieService.getMovieById(Number(movieId))
       .then((res) => res.json())
       .then((resJson) => {
-        console.log(resJson);
         setMovie(resJson);
       });
   }, [movieId]);
@@ -36,14 +35,6 @@ const MovieDetails = ({ movieId }) => {
       </div>
     </div>
   );
-};
-
-MovieDetails.defaultProps = {
-  movieId: null,
-};
-
-MovieDetails.propTypes = {
-  movieId: PropTypes.number,
 };
 
 export default MovieDetails;
