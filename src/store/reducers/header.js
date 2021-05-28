@@ -1,9 +1,10 @@
-import { SET_HEADER_MOVIE } from '../actions/types';
+import { GET_MOVIE_BY_ID_SUCCESS, GET_MOVIE_BY_ID_FAIL } from '../actions/types';
 
 const headerReducer = (state = null, action) => {
   switch (action.type) {
-    case SET_HEADER_MOVIE:
-      return action.payload;
+    case GET_MOVIE_BY_ID_SUCCESS:
+      return action.movie;
+    case GET_MOVIE_BY_ID_FAIL:
     default:
       return state;
   }

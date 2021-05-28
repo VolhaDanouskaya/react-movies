@@ -7,7 +7,7 @@ const useSessionStorage = (storageKey) => {
     if (value) {
       sessionStorage.setItem(storageKey, value);
     }
-  }, [value]);
+  }, [value, storageKey]);
 
   return [value, setValue];
 };

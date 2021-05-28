@@ -3,14 +3,15 @@ import React, { useEffect } from 'react';
 import { Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
+import {
+  Route, Switch, Redirect, useLocation,
+} from 'react-router-dom';
 
 import useSessionStorage from '../../hooks/useSessionStorage';
 import { loadMovies } from '../../store/actions/movies';
 import ErrorBoundary from '../error/ErrorBoundary';
 
 import GenresFilter from './GenresFilter';
-import MovieCard from './movieList/MovieCard';
 import MovieList from './movieList/MovieList';
 import MoviesSorter from './MoviesSorter';
 import './body.scss';
@@ -72,7 +73,22 @@ const Body = ({ movies, loadMovies }) => {
 };
 
 Body.propTypes = {
-  movies: PropTypes.arrayOf(MovieCard).isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
+      release_date: PropTypes.string,
+      genres: PropTypes.arrayOf(PropTypes.string),
+      vote_average: PropTypes.number,
+      tagline: PropTypes.string,
+      vote_count: PropTypes.number,
+      overview: PropTypes.string,
+      budget: PropTypes.number,
+      revenue: PropTypes.number,
+      runtime: PropTypes.number,
+    }),
+  ).isRequired,
   loadMovies: PropTypes.func.isRequired,
 };
 

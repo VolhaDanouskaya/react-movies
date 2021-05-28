@@ -30,7 +30,6 @@ const moviesReducer = (state = [], action) => {
     case ADD_MOVIE_FAIL:
     case UPDATE_MOVIE_FAIL:
     case DELETE_MOVIE_FAIL:
-      alert(action.message);
     default:
       return state;
   }

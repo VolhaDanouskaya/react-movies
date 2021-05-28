@@ -9,12 +9,16 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import CloseIcon from '@material-ui/icons/Close';
-import { Field, Form, FormikProvider, ErrorMessage, useFormik } from 'formik';
+import {
+  Field, Form, FormikProvider, ErrorMessage, useFormik,
+} from 'formik';
 import PropTypes from 'prop-types';
 
 import { genresArray, validationSchema, MOVIE_FIELDS } from '../../constants';
 
-const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
+const UpdateMovieDialog = ({
+  movie, open, onUpdate, onClose,
+}) => {
   const [genres, setGenres] = useState(movie?.genres || []);
   const onCloseEditDialog = () => {
     onClose();

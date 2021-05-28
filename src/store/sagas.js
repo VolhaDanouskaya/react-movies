@@ -1,9 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'regenerator-runtime/runtime';
+
 import { call, put, takeEvery } from 'redux-saga/effects';
+
 import MoviesService from '../services/MoviesService';
-import './actions/types';
-import { LOAD_MOVIES, ADD_MOVIE, DELETE_MOVIE, UPDATE_MOVIE } from './actions/types';
+
+import { getMovieSuccess, getMovieFail } from './actions/header';
 import {
   loadMoviesSuccess,
   loadMoviesFail,
@@ -14,6 +16,9 @@ import {
   deleteMovieSuccess,
   deleteMovieFail,
 } from './actions/movies';
+import {
+  LOAD_MOVIES, ADD_MOVIE, DELETE_MOVIE, UPDATE_MOVIE, GET_MOVIE_BY_ID,
+} from './actions/types';
 
 function* getAllMovies({ filter, sort, query }) {
   try {
@@ -24,6 +29,14 @@ function* getAllMovies({ filter, sort, query }) {
   }
 }
 
+function* getMovie({ movieId }) {
+  try {
+    const movie = yield call(MoviesService.getMovieById, movieId);
+    yield put(getMovieSuccess(movie));
+  } catch (e) {
+    yield put(getMovieFail(e.message));
+  }
+}
 function* addMovie({ movie }) {
   try {
     const addedMovie = yield call(MoviesService.addMovie, movie);
@@ -56,6 +69,7 @@ function* moviesSagas() {
   yield takeEvery(ADD_MOVIE, addMovie);
   yield takeEvery(UPDATE_MOVIE, updateMovie);
   yield takeEvery(DELETE_MOVIE, deleteMovie);
+  yield takeEvery(GET_MOVIE_BY_ID, getMovie);
 }
 
 export default moviesSagas;

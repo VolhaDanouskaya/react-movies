@@ -99,6 +99,8 @@ MovieCard.propTypes = {
     revenue: PropTypes.number,
     runtime: PropTypes.number,
   }).isRequired,
+  updateMovie: PropTypes.func.isRequired,
+  deleteMovie: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

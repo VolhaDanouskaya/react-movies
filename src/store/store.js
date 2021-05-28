@@ -7,7 +7,7 @@ import moviesSagas from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
-  combineReducers({ movies: moviesReducer, header: headerReducer }),
+  combineReducers({ movies: moviesReducer, movie: headerReducer }),
   applyMiddleware(sagaMiddleware),
 );
 sagaMiddleware.run(moviesSagas);

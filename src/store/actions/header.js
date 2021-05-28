@@ -1,8 +1,16 @@
-import { SET_HEADER_MOVIE } from './types';
+import { GET_MOVIE_BY_ID, GET_MOVIE_BY_ID_SUCCESS, GET_MOVIE_BY_ID_FAIL } from './types';
 
-const setHeaderMovie = (id) => ({
-  type: SET_HEADER_MOVIE,
-  payload: id,
+export const getMovie = (movieId) => ({
+  type: GET_MOVIE_BY_ID,
+  movieId,
 });
 
-export default setHeaderMovie;
+export const getMovieSuccess = (movie) => ({
+  type: GET_MOVIE_BY_ID_SUCCESS,
+  movie,
+});
+
+export const getMovieFail = (message) => ({
+  type: GET_MOVIE_BY_ID_FAIL,
+  message,
+});

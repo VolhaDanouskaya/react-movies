@@ -12,7 +12,7 @@ import MovieDetails from './movieDetails/MovieDetails';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
-import { addMovie, loadMovies } from '../../store/actions/movies';
+import { addMovie } from '../../store/actions/movies';
 
 import { Switch, Route, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -63,7 +63,6 @@ const Header = ({ addMovie }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   addMovie: (movie) => dispatch(addMovie(movie)),
-  searchMovies: (currentFilter, currentSort, query) => dispatch(loadMovies(currentFilter, currentSort, query)),
 });
 
 Header.propTypes = {
