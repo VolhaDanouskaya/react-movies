@@ -1,11 +1,11 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { addMovie } from '../../store/actions/movies';
+import { addMovie } from '../../store/actions/movies'
 
-import Header from './Header';
+import Header from './Header'
 
 const mapDispatchToProps = {
-  addMovie,
-};
+  addMovie
+}
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header)

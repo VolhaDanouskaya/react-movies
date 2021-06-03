@@ -1,33 +1,33 @@
-import { Container } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+import { Container } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
 
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import SearchBar from './searchBar/SearchBar';
-import AddMovieDialog from './AddMovieDialog';
-import MovieDetails from './movieDetails';
+import SearchBar from './searchBar/SearchBar'
+import AddMovieDialog from './AddMovieDialog'
+import MovieDetails from './movieDetails'
 
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
-import { Switch, Route, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import IconButton from '@material-ui/core/IconButton'
+import SearchIcon from '@material-ui/icons/Search'
+import { Switch, Route, useHistory } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 /* eslint-disable import/no-absolute-path */
-import logo from '/public/images/logo.png';
-import './header.scss';
+import logo from '/public/images/logo.png'
+import './header.scss'
 
 const Header = ({ addMovie }) => {
-  const [openAdd, setOpenAdd] = useState(false);
-  const history = useHistory();
+  const [openAdd, setOpenAdd] = useState(false)
+  const history = useHistory()
 
   const onAddMovieClick = () => {
-    setOpenAdd(true);
-  };
+    setOpenAdd(true)
+  }
 
   const onAddMovie = (movie) => {
-    addMovie(movie);
-    setOpenAdd(false);
-  };
+    addMovie(movie)
+    setOpenAdd(false)
+  }
 
   return (
     <Container className="header" fixed>
@@ -44,20 +44,29 @@ const Header = ({ addMovie }) => {
         <Route path="/">
           <div className="subheader">
             <img className="logo" src={logo} alt="" />
-            <Button id="button-add-movie" variant="contained" size="large" onClick={onAddMovieClick}>
+            <Button
+              id="button-add-movie"
+              variant="contained"
+              size="large"
+              onClick={onAddMovieClick}
+            >
               + Add Movie
             </Button>
-            <AddMovieDialog open={openAdd} onAdd={onAddMovie} onClose={() => setOpenAdd(false)} />
+            <AddMovieDialog
+              open={openAdd}
+              onAdd={onAddMovie}
+              onClose={() => setOpenAdd(false)}
+            />
           </div>
           <SearchBar />
         </Route>
       </Switch>
     </Container>
-  );
-};
+  )
+}
 
 Header.propTypes = {
-  addMovie: PropTypes.func.isRequired,
-};
+  addMovie: PropTypes.func.isRequired
+}
 
-export default Header;
+export default Header

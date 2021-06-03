@@ -1,12 +1,12 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { deleteMovie, updateMovie } from '../../../../store/actions/movies';
+import { deleteMovie, updateMovie } from '../../../../store/actions/movies'
 
-import MovieCard from './MovieCard';
+import MovieCard from './MovieCard'
 
 const mapDispatchToProps = {
   updateMovie,
-  deleteMovie,
-};
+  deleteMovie
+}
 
-export default connect(null, mapDispatchToProps)(MovieCard);
+export default connect(null, mapDispatchToProps)(MovieCard)

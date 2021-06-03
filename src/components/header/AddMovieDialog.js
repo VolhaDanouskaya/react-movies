@@ -1,32 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import IconButton from '@material-ui/core/IconButton';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import CloseIcon from '@material-ui/icons/Close';
-import {
-  Field, Form, FormikProvider, ErrorMessage, useFormik,
-} from 'formik';
-import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import IconButton from '@material-ui/core/IconButton'
+import MenuItem from '@material-ui/core/MenuItem'
+import Select from '@material-ui/core/Select'
+import CloseIcon from '@material-ui/icons/Close'
+import { Field, Form, FormikProvider, ErrorMessage, useFormik } from 'formik'
+import PropTypes from 'prop-types'
 
-import { genresArray, validationSchema, MOVIE_FIELDS } from '../constants';
+import { genresArray, validationSchema, MOVIE_FIELDS } from '../constants'
 
 const AddMovieDialog = ({ open, onAdd, onClose }) => {
-  const [genres, setGenres] = useState([]);
+  const [genres, setGenres] = useState([])
 
   const onCloseAddDialog = () => {
-    onClose();
-  };
+    onClose()
+  }
 
   const onChangeGenres = (value, setFieldValue) => {
-    setGenres(value);
-    setFieldValue('genres', value);
-  };
+    setGenres(value)
+    setFieldValue('genres', value)
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -35,20 +33,25 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
       poster_path: '',
       genres,
       overview: '',
-      runtime: '',
+      runtime: ''
     },
     validationSchema,
     values: {
-      genres,
+      genres
     },
     onSubmit: (fields) => {
-      onAdd(fields);
-    },
-  });
+      onAdd(fields)
+    }
+  })
 
   return (
     <FormikProvider value={formik}>
-      <Dialog disableBackdropClick disableEscapeKeyDown open={open} onClose={onCloseAddDialog}>
+      <Dialog
+        disableBackdropClick
+        disableEscapeKeyDown
+        open={open}
+        onClose={onCloseAddDialog}
+      >
         <IconButton aria-label="close" onClick={onCloseAddDialog}>
           <CloseIcon />
         </IconButton>
@@ -56,21 +59,50 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
           <DialogTitle id="alert-dialog-title">Add Movie</DialogTitle>
           <DialogContent className="dialog-form-content">
             <p className="edit-field-name">Title</p>
-            <Field type="text" name={MOVIE_FIELDS.TITLE} placeholder="Movie Title" className="edit-field" />
-            <ErrorMessage name={MOVIE_FIELDS.TITLE} component="div" className="error" />
+            <Field
+              type="text"
+              name={MOVIE_FIELDS.TITLE}
+              placeholder="Movie Title"
+              className="edit-field"
+            />
+            <ErrorMessage
+              name={MOVIE_FIELDS.TITLE}
+              component="div"
+              className="error"
+            />
             <p className="edit-field-name">Release Date</p>
-            <Field type="date" name={MOVIE_FIELDS.RELEASE_DATE} placeholder="Select Date" className="edit-field" />
-            <ErrorMessage name={MOVIE_FIELDS.RELEASE_DATE} component="div" className="error" />
+            <Field
+              type="date"
+              name={MOVIE_FIELDS.RELEASE_DATE}
+              placeholder="Select Date"
+              className="edit-field"
+            />
+            <ErrorMessage
+              name={MOVIE_FIELDS.RELEASE_DATE}
+              component="div"
+              className="error"
+            />
             <p className="edit-field-name">Movie URL</p>
-            <Field type="text" name={MOVIE_FIELDS.POSTER_PATH} placeholder="Movie URL here" className="edit-field" />
-            <ErrorMessage name={MOVIE_FIELDS.POSTER_PATH} component="div" className="error" />
+            <Field
+              type="text"
+              name={MOVIE_FIELDS.POSTER_PATH}
+              placeholder="Movie URL here"
+              className="edit-field"
+            />
+            <ErrorMessage
+              name={MOVIE_FIELDS.POSTER_PATH}
+              component="div"
+              className="error"
+            />
             <p className="edit-field-name">Genre</p>
             <Select
               type="text"
               name={MOVIE_FIELDS.GENRES}
               className="edit-field"
               value={genres}
-              onChange={(event) => onChangeGenres(event.target.value, formik.setFieldValue)}
+              onChange={(event) =>
+                onChangeGenres(event.target.value, formik.setFieldValue)
+              }
               multiple
             >
               {genresArray.map((genre) => (
@@ -79,13 +111,35 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
                 </MenuItem>
               ))}
             </Select>
-            <ErrorMessage name={MOVIE_FIELDS.GENRES} component="div" className="error" />
+            <ErrorMessage
+              name={MOVIE_FIELDS.GENRES}
+              component="div"
+              className="error"
+            />
             <p className="edit-field-name">Overview</p>
-            <Field as="textarea" name={MOVIE_FIELDS.OVERVIEW} placeholder="Overview Here" className="edit-field" />
-            <ErrorMessage name={MOVIE_FIELDS.OVERVIEW} component="div" className="error" />
+            <Field
+              as="textarea"
+              name={MOVIE_FIELDS.OVERVIEW}
+              placeholder="Overview Here"
+              className="edit-field"
+            />
+            <ErrorMessage
+              name={MOVIE_FIELDS.OVERVIEW}
+              component="div"
+              className="error"
+            />
             <p className="edit-field-name">Runtime</p>
-            <Field type="number" name={MOVIE_FIELDS.RUNTIME} placeholder="Runtime Here" className="edit-field" />
-            <ErrorMessage name={MOVIE_FIELDS.RUNTIME} component="div" className="error" />
+            <Field
+              type="number"
+              name={MOVIE_FIELDS.RUNTIME}
+              placeholder="Runtime Here"
+              className="edit-field"
+            />
+            <ErrorMessage
+              name={MOVIE_FIELDS.RUNTIME}
+              component="div"
+              className="error"
+            />
           </DialogContent>
           <DialogActions>
             <Button onClick={onCloseAddDialog} color="secondary" size="large">
@@ -98,13 +152,13 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
         </Form>
       </Dialog>
     </FormikProvider>
-  );
-};
+  )
+}
 
 AddMovieDialog.propTypes = {
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  onAdd: PropTypes.func.isRequired,
-};
+  onAdd: PropTypes.func.isRequired
+}
 
-export default AddMovieDialog;
+export default AddMovieDialog

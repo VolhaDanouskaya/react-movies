@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
-import MovieCard from './movieCard';
+import MovieCard from './movieCard'
 
 const MovieList = ({ movies }) => (
   <ul className="movie-list">
@@ -10,7 +10,7 @@ const MovieList = ({ movies }) => (
       <MovieCard key={movie?.id} movie={movie} />
     ))}
   </ul>
-);
+)
 
 MovieList.propTypes = {
   movies: PropTypes.arrayOf(
@@ -26,9 +26,9 @@ MovieList.propTypes = {
       overview: PropTypes.string,
       budget: PropTypes.number,
       revenue: PropTypes.number,
-      runtime: PropTypes.number,
-    }),
-  ).isRequired,
-};
+      runtime: PropTypes.number
+    })
+  ).isRequired
+}
 
-export default MovieList;
+export default MovieList

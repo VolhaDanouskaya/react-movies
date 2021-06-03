@@ -1,41 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 
-import { Container } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
+import { Container } from '@material-ui/core'
+import PropTypes from 'prop-types'
+import { Route, Switch, Redirect, useLocation } from 'react-router-dom'
 
-import useSessionStorage from '../../hooks/useSessionStorage';
-import { loadMovies } from '../../store/actions/movies';
-import ErrorBoundary from '../error/ErrorBoundary';
+import useSessionStorage from '../../hooks/useSessionStorage'
+import ErrorBoundary from '../error/ErrorBoundary'
 
-import GenresFilter from './GenresFilter';
-import MovieList from './movieList/MovieList';
-import MoviesSorter from './MoviesSorter';
-import './body.scss';
+import GenresFilter from './GenresFilter'
+import MovieList from './movieList/MovieList'
+import MoviesSorter from './MoviesSorter'
+import './body.scss'
 
 const Body = ({ movies, loadMovies }) => {
-  const [currentFilter, setCurrentFilter] = useSessionStorage('filter');
-  const [currentSort, setCurrentSort] = useSessionStorage('sort');
-  const searchQuery = useLocation().search;
-  const query = new URLSearchParams(searchQuery).get('search');
+  const [currentFilter, setCurrentFilter] = useSessionStorage('filter')
+  const [currentSort, setCurrentSort] = useSessionStorage('sort')
+  const searchQuery = useLocation().search
+  const query = new URLSearchParams(searchQuery).get('search')
 
   useEffect(() => {
-    loadMovies(currentFilter, currentSort, query);
-  }, [currentFilter, currentSort, query, loadMovies]);
+    loadMovies(currentFilter, currentSort, query)
+  }, [currentFilter, currentSort, query, loadMovies])
 
   const onFilterClick = (genre) => {
-    setCurrentFilter(genre);
-  };
+    setCurrentFilter(genre)
+  }
 
   const onSortChange = (sort) => {
-    setCurrentSort(sort);
-  };
+    setCurrentSort(sort)
+  }
 
   return (
     <Container className="body" fixed>
       <div className="submenu">
-        <GenresFilter onFilterClick={onFilterClick} selectedFilter={currentFilter} />
+        <GenresFilter
+          onFilterClick={onFilterClick}
+          selectedFilter={currentFilter}
+        />
         <MoviesSorter onSortChange={onSortChange} selectedSort={currentSort} />
       </div>
       <Switch>
@@ -58,8 +59,8 @@ const Body = ({ movies, loadMovies }) => {
         </Route>
       </Switch>
     </Container>
-  );
-};
+  )
+}
 
 Body.propTypes = {
   movies: PropTypes.arrayOf(
@@ -75,10 +76,10 @@ Body.propTypes = {
       overview: PropTypes.string,
       budget: PropTypes.number,
       revenue: PropTypes.number,
-      runtime: PropTypes.number,
-    }),
+      runtime: PropTypes.number
+    })
   ).isRequired,
-  loadMovies: PropTypes.func.isRequired,
-};
+  loadMovies: PropTypes.func.isRequired
+}
 
-export default Body;
+export default Body

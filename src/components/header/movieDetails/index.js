@@ -1,12 +1,12 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { getMovie } from '../../../store/actions/header';
+import { getMovie } from '../../../store/actions/header'
 
-import MovieDetails from './MovieDetails';
+import MovieDetails from './MovieDetails'
 
-const mapStateToProps = (state) => ({ movie: state.movie });
+const mapStateToProps = (state) => ({ movie: state.movie })
 
 const mapDispatchToProps = {
-  getMovie,
-};
-export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);
+  getMovie
+}
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails)

@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 const useSessionStorage = (storageKey) => {
-  const [value, setValue] = useState(sessionStorage.getItem(storageKey));
+  const [value, setValue] = useState(sessionStorage.getItem(storageKey))
 
   useEffect(() => {
     if (value) {
-      sessionStorage.setItem(storageKey, value);
+      sessionStorage.setItem(storageKey, value)
     }
-  }, [value, storageKey]);
+  }, [value, storageKey])
 
-  return [value, setValue];
-};
+  return [value, setValue]
+}
 
-export default useSessionStorage;
+export default useSessionStorage

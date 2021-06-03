@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import { Container } from '@material-ui/core';
+import { Container } from '@material-ui/core'
 
-import Footer from '../footer/Footer';
+import Footer from '../footer/Footer'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 /* eslint-disable import/no-absolute-path */
-import logo from '/public/images/logo.png';
-import './error.scss';
+import logo from '/public/images/logo.png'
+import './error.scss'
 
 const PageNotFound = () => (
   <>
@@ -23,6 +23,6 @@ const PageNotFound = () => (
     </Container>
     <Footer />
   </>
-);
+)
 
-export default PageNotFound;
+export default PageNotFound
