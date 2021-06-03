@@ -3,17 +3,12 @@ import Button from '@material-ui/core/Button';
 
 import React, { useState } from 'react';
 
-import { connect } from 'react-redux';
-
 import SearchBar from './searchBar/SearchBar';
 import AddMovieDialog from './AddMovieDialog';
 import MovieDetails from './movieDetails/MovieDetails';
 
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-
-import { addMovie } from '../../store/actions/movies';
-
 import { Switch, Route, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -61,12 +56,8 @@ const Header = ({ addMovie }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addMovie: (movie) => dispatch(addMovie(movie)),
-});
-
 Header.propTypes = {
   addMovie: PropTypes.func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(Header);
+export default Header;

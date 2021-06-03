@@ -26,23 +26,13 @@ const MovieDetails = ({ movie, getMovieById }) => {
         <div className="tagline">{movie?.tagline}</div>
         <div className="third-row">
           <div className="release-date">{movie?.release_date?.split('-')[0]}</div>
-          <div className="runtime">
-            {movie?.runtime}
-            {' '}
-            min
-          </div>
+          <div className="runtime">{movie?.runtime} min</div>
         </div>
         <div className="overview">{movie?.overview}</div>
       </div>
     </div>
   );
 };
-
-const mapStateToProps = (state) => ({ movie: state.movie });
-
-const mapDispatchToProps = (dispatch) => ({
-  getMovieById: (id) => dispatch(getMovie(id)),
-});
 
 MovieDetails.propTypes = {
   movie: PropTypes.shape({
@@ -61,5 +51,11 @@ MovieDetails.propTypes = {
   }).isRequired,
   getMovieById: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = (state) => ({ movie: state.movie });
+
+const mapDispatchToProps = (dispatch) => ({
+  getMovieById: (id) => dispatch(getMovie(id)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);

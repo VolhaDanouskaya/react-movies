@@ -7,15 +7,12 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { deleteMovie, updateMovie } from '../../../store/actions/movies';
+import DeleteMovieDialog from '../DeleteMovieDialog';
+import UpdateMovieDialog from '../UpdateMovieDialog';
 
-import DeleteMovieDialog from './DeleteMovieDialog';
-import UpdateMovieDialog from './UpdateMovieDialog';
-
-import './movies.scss';
+import '../movies.scss';
 
 const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -103,9 +100,4 @@ MovieCard.propTypes = {
   deleteMovie: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  updateMovie: (movie) => dispatch(updateMovie(movie)),
-  deleteMovie: (id) => dispatch(deleteMovie(id)),
-});
-
-export default connect(null, mapDispatchToProps)(MovieCard);
+export default MovieCard;

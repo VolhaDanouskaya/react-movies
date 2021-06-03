@@ -4,29 +4,24 @@ class MoviesService {
   fetchMovies = (filter, sort, query) => fetch(this.buildUrl(filter, sort, query)).then((res) => res.json());
 
   getMovieById = (movieId) => fetch(this.apiURL + movieId).then((res) => res.json());
-  // .then((res) => {
-  //   console.log(res);
-  //   res.json();
-  // })
-  // .then((resJson) => {
-  //   console.log(resJson);
-  // });
 
-  addMovie = (movie) => fetch(this.apiURL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(movie),
-  }).then((res) => res.json());
+  addMovie = (movie) =>
+    fetch(this.apiURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(movie),
+    }).then((res) => res.json());
 
-  updateMovie = (movie) => fetch(this.apiURL, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(movie),
-  });
+  updateMovie = (movie) =>
+    fetch(this.apiURL, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(movie),
+    });
 
   deleteMovie = (id) => fetch(this.apiURL + id, { method: 'DELETE' });
 
