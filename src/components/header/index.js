@@ -4,8 +4,8 @@ import { addMovie } from '../../store/actions/movies';
 
 import Header from './Header';
 
-const mapDispatchToProps = (dispatch) => ({
-  addMovie: (movie) => dispatch(addMovie(movie)),
-});
+const mapDispatchToProps = {
+  addMovie,
+};
 
 export default connect(null, mapDispatchToProps)(Header);

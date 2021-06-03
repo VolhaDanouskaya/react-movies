@@ -78,7 +78,7 @@ Body.propTypes = {
       runtime: PropTypes.number,
     }),
   ).isRequired,
-  dispatchLoadMovies: PropTypes.func.isRequired,
+  loadMovies: PropTypes.func.isRequired,
 };
 
 export default Body;

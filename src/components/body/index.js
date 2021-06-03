@@ -6,8 +6,8 @@ import Body from './Body';
 
 const mapStateToProps = (state) => ({ movies: state.movies });
 
-const mapDispatchToProps = (dispatch) => ({
-  loadMovies: (filter, sort, query) => dispatch(loadMovies(filter, sort, query)),
-});
+const mapDispatchToProps = {
+  loadMovies,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Body);

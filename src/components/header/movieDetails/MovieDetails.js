@@ -1,19 +1,16 @@
 import React, { useEffect } from 'react';
 
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
-import { getMovie } from '../../../store/actions/header';
 
 import './movieDetails.scss';
 
-const MovieDetails = ({ movie, getMovieById }) => {
+const MovieDetails = ({ movie, getMovie }) => {
   const { movieId } = useParams();
 
   useEffect(() => {
-    getMovieById(Number(movieId));
-  }, [movieId, getMovieById]);
+    getMovie(Number(movieId));
+  }, [movieId, getMovie]);
 
   return (
     <div className="movie-details">
@@ -34,6 +31,10 @@ const MovieDetails = ({ movie, getMovieById }) => {
   );
 };
 
+MovieDetails.defaultProps = {
+  movie: null,
+};
+
 MovieDetails.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -48,14 +49,8 @@ MovieDetails.propTypes = {
     budget: PropTypes.number,
     revenue: PropTypes.number,
     runtime: PropTypes.number,
-  }).isRequired,
-  getMovieById: PropTypes.func.isRequired,
+  }),
+  getMovie: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({ movie: state.movie });
-
-const mapDispatchToProps = (dispatch) => ({
-  getMovieById: (id) => dispatch(getMovie(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);
+export default MovieDetails;

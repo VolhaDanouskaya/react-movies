@@ -6,7 +6,7 @@ import MovieDetails from './MovieDetails';
 
 const mapStateToProps = (state) => ({ movie: state.movie });
 
-const mapDispatchToProps = (dispatch) => ({
-  getMovieById: (id) => dispatch(getMovie(id)),
-});
+const mapDispatchToProps = {
+  getMovie,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);

@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 import SearchBar from './searchBar/SearchBar';
 import AddMovieDialog from './AddMovieDialog';
-import MovieDetails from './movieDetails/MovieDetails';
+import MovieDetails from './movieDetails';
 
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';

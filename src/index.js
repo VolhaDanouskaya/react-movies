@@ -4,10 +4,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import Body from './components/body/Body';
+import Body from './components/body';
 import PageNotFound from './components/error/PageNotFound';
 import Footer from './components/footer/Footer';
-import Header from './components/header/Header';
+import Header from './components/header';
 import Layout from './components/layout/Layout';
 import store from './store/store';
 

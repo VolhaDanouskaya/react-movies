@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import MovieCard from './movieCard/MovieCard';
+import MovieCard from './movieCard';
 
 const MovieList = ({ movies }) => (
   <ul className="movie-list">
