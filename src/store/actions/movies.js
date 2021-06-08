@@ -10,67 +10,67 @@ import {
   UPDATE_MOVIE_SUCCESS,
   UPDATE_MOVIE_FAIL,
   DELETE_MOVIE_SUCCESS,
-  DELETE_MOVIE_FAIL
-} from './types'
+  DELETE_MOVIE_FAIL,
+} from './types';
 
 export const loadMovies = (filter, sort, query) => ({
   type: LOAD_MOVIES,
   filter,
   sort,
-  query
-})
+  query,
+});
 
 export const loadMoviesSuccess = (movies) => ({
   type: LOAD_MOVIES_SUCCCESS,
-  movies
-})
+  movies,
+});
 
 export const loadMoviesFail = (message) => ({
   type: LOAD_MOVIES_FAIL,
-  message
-})
+  message,
+});
 
 export const addMovie = (movie) => ({
   type: ADD_MOVIE,
-  movie
-})
+  movie,
+});
 
 export const addMovieSuccess = (movie) => ({
   type: ADD_MOVIE_SUCCESS,
-  movie
-})
+  movie,
+});
 
 export const addMovieFail = (message) => ({
   type: ADD_MOVIE_FAIL,
-  message
-})
+  message,
+});
 
 export const updateMovie = (movie) => ({
   type: UPDATE_MOVIE,
-  movie
-})
+  movie,
+});
 
 export const updateMovieSuccess = (movie) => ({
   type: UPDATE_MOVIE_SUCCESS,
-  movie
-})
+  movie,
+});
 
 export const updateMovieFail = (message) => ({
   type: UPDATE_MOVIE_FAIL,
-  message
-})
+  message,
+});
 
 export const deleteMovie = (id) => ({
   type: DELETE_MOVIE,
-  id
-})
+  id,
+});
 
 export const deleteMovieSuccess = (id) => ({
   type: DELETE_MOVIE_SUCCESS,
-  id
-})
+  id,
+});
 
 export const deleteMovieFail = (message) => ({
   type: DELETE_MOVIE_FAIL,
-  message
-})
+  message,
+});

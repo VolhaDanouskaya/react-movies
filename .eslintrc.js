@@ -19,8 +19,6 @@ module.exports = {
       'warn',
       {
         singleQuote: true,
-        semi: false,
-        trailingComma: 'none',
       },
     ],
     'max-len': [2, 120],

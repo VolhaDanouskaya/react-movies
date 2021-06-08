@@ -1,13 +1,13 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import { loadMovies } from '../../store/actions/movies'
+import { loadMovies } from '../../store/actions/movies';
 
-import Body from './Body'
+import Body from './Body';
 
-const mapStateToProps = (state) => ({ movies: state.movies })
+const mapStateToProps = (state) => ({ movies: state.movies });
 
 const mapDispatchToProps = {
-  loadMovies
-}
+  loadMovies,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Body)
+export default connect(mapStateToProps, mapDispatchToProps)(Body);

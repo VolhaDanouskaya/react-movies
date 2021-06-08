@@ -21,7 +21,9 @@ const MovieDetails = ({ movie, getMovie }) => {
         </div>
         <div className="tagline">{movie?.tagline}</div>
         <div className="third-row">
-          <div className="release-date">{movie?.release_date?.split('-')[0]}</div>
+          <div className="release-date">
+            {movie?.release_date?.split('-')[0]}
+          </div>
           <div className="runtime">{movie?.runtime} min</div>
         </div>
         <div className="overview">{movie?.overview}</div>

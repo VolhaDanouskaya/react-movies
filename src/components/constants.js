@@ -1,4 +1,4 @@
-import * as yup from 'yup'
+import * as yup from 'yup';
 
 export const MOVIE_FIELDS = {
   TITLE: 'title',
@@ -6,8 +6,8 @@ export const MOVIE_FIELDS = {
   POSTER_PATH: 'poster_path',
   GENRES: 'genres',
   OVERVIEW: 'overview',
-  RUNTIME: 'runtime'
-}
+  RUNTIME: 'runtime',
+};
 
 export const genresArray = [
   'Action',
@@ -17,8 +17,8 @@ export const genresArray = [
   'Drama',
   'Family',
   'Fantasy',
-  'Science Fiction'
-]
+  'Science Fiction',
+];
 
 export const validationSchema = yup.object({
   title: yup.string().required('Title is required'),
@@ -26,5 +26,5 @@ export const validationSchema = yup.object({
   release_date: yup.string(),
   overview: yup.string().required('Overview is required'),
   runtime: yup.number().required('Runtime is required'),
-  genres: yup.array().min(1).required('Minimum one genre should be selected')
-})
+  genres: yup.array().min(1).required('Minimum one genre should be selected'),
+});

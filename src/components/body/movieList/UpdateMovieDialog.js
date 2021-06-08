@@ -1,29 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import IconButton from '@material-ui/core/IconButton'
-import MenuItem from '@material-ui/core/MenuItem'
-import Select from '@material-ui/core/Select'
-import CloseIcon from '@material-ui/icons/Close'
-import { Field, Form, FormikProvider, ErrorMessage, useFormik } from 'formik'
-import PropTypes from 'prop-types'
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import IconButton from '@material-ui/core/IconButton';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import CloseIcon from '@material-ui/icons/Close';
+import { Field, Form, FormikProvider, ErrorMessage, useFormik } from 'formik';
+import PropTypes from 'prop-types';
 
-import { genresArray, validationSchema, MOVIE_FIELDS } from '../../constants'
+import { genresArray, validationSchema, MOVIE_FIELDS } from '../../constants';
 
 const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
-  const [genres, setGenres] = useState(movie?.genres || [])
+  const [genres, setGenres] = useState(movie?.genres || []);
   const onCloseEditDialog = () => {
-    onClose()
-  }
+    onClose();
+  };
 
   const onChangeGenres = (value, setFieldValue) => {
-    setGenres(value)
-    setFieldValue('genres', value)
-  }
+    setGenres(value);
+    setFieldValue('genres', value);
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -33,16 +33,16 @@ const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
       poster_path: movie?.poster_path,
       overview: movie?.overview,
       runtime: movie?.runtime,
-      genres
+      genres,
     },
     validationSchema,
     values: {
-      genres
+      genres,
     },
     onSubmit: (fields) => {
-      onUpdate(fields)
-    }
-  })
+      onUpdate(fields);
+    },
+  });
 
   return (
     <FormikProvider value={formik}>
@@ -147,8 +147,8 @@ const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
         </Form>
       </Dialog>
     </FormikProvider>
-  )
-}
+  );
+};
 
 UpdateMovieDialog.propTypes = {
   movie: PropTypes.shape({
@@ -164,11 +164,11 @@ UpdateMovieDialog.propTypes = {
     overview: PropTypes.string,
     budget: PropTypes.number,
     revenue: PropTypes.number,
-    runtime: PropTypes.number
+    runtime: PropTypes.number,
   }).isRequired,
   open: PropTypes.bool.isRequired,
   onUpdate: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired
-}
+  onClose: PropTypes.func.isRequired,
+};
 
-export default UpdateMovieDialog
+export default UpdateMovieDialog;

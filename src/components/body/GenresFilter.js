@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import PropTypes from 'prop-types'
-import './body.scss'
+import PropTypes from 'prop-types';
+import './body.scss';
 
-const genres = ['All', 'Adventure', 'Comedy', 'Drama', 'Fantasy']
+const genres = ['All', 'Adventure', 'Comedy', 'Drama', 'Fantasy'];
 
 const GenresFilter = ({ onFilterClick, selectedFilter }) => {
-  const [selected, setSelected] = useState(selectedFilter)
+  const [selected, setSelected] = useState(selectedFilter);
 
   return (
     <div className="genres-filter">
@@ -15,8 +15,8 @@ const GenresFilter = ({ onFilterClick, selectedFilter }) => {
           key={genre}
           type="button"
           onClick={() => {
-            onFilterClick(genre)
-            setSelected(genre)
+            onFilterClick(genre);
+            setSelected(genre);
           }}
           className={`item ${genre === selected ? 'active' : ''}`}
         >
@@ -24,12 +24,12 @@ const GenresFilter = ({ onFilterClick, selectedFilter }) => {
         </button>
       ))}
     </div>
-  )
-}
+  );
+};
 
 GenresFilter.propTypes = {
   onFilterClick: PropTypes.func.isRequired,
-  selectedFilter: PropTypes.string.isRequired
-}
+  selectedFilter: PropTypes.string.isRequired,
+};
 
-export default GenresFilter
+export default GenresFilter;

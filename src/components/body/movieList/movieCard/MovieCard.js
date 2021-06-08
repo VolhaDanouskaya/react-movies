@@ -1,51 +1,51 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import IconButton from '@material-ui/core/IconButton'
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
-import MoreVertIcon from '@material-ui/icons/MoreVert'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import DeleteMovieDialog from '../DeleteMovieDialog'
-import UpdateMovieDialog from '../UpdateMovieDialog'
+import DeleteMovieDialog from '../DeleteMovieDialog';
+import UpdateMovieDialog from '../UpdateMovieDialog';
 
-import '../movies.scss'
+import '../movies.scss';
 
 const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
-  const [anchorEl, setAnchorEl] = useState(null)
-  const [openDelete, setOpenDelete] = useState(false)
-  const [openEdit, setOpenEdit] = useState(false)
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
 
   const handleClick = (e) => {
-    setAnchorEl(e.currentTarget)
-  }
+    setAnchorEl(e.currentTarget);
+  };
 
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   const onEditMenuItemClick = () => {
-    handleClose()
-    setOpenEdit(true)
-  }
+    handleClose();
+    setOpenEdit(true);
+  };
 
   const onDeleteMenuItemClick = () => {
-    handleClose()
-    setOpenDelete(true)
-  }
+    handleClose();
+    setOpenDelete(true);
+  };
 
   const onDeleteMovie = (movieId) => {
-    deleteMovie(movieId)
-    setOpenDelete(false)
-  }
+    deleteMovie(movieId);
+    setOpenDelete(false);
+  };
 
   const onUpdateMovie = (m) => {
-    updateMovie(m)
-    setOpenEdit(false)
-  }
+    updateMovie(m);
+    setOpenEdit(false);
+  };
 
   return (
     <li className="movie-card">
@@ -96,8 +96,8 @@ const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
         />
       </Menu>
     </li>
-  )
-}
+  );
+};
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
@@ -112,10 +112,10 @@ MovieCard.propTypes = {
     overview: PropTypes.string,
     budget: PropTypes.number,
     revenue: PropTypes.number,
-    runtime: PropTypes.number
+    runtime: PropTypes.number,
   }).isRequired,
   updateMovie: PropTypes.func.isRequired,
-  deleteMovie: PropTypes.func.isRequired
-}
+  deleteMovie: PropTypes.func.isRequired,
+};
 
-export default MovieCard
+export default MovieCard;
