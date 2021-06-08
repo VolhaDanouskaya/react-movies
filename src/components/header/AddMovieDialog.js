@@ -46,7 +46,12 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
 
   return (
     <FormikProvider value={formik}>
-      <Dialog disableBackdropClick disableEscapeKeyDown open={open} onClose={onCloseAddDialog}>
+      <Dialog
+        disableBackdropClick
+        disableEscapeKeyDown
+        open={open}
+        onClose={onCloseAddDialog}
+      >
         <IconButton aria-label="close" onClick={onCloseAddDialog}>
           <CloseIcon />
         </IconButton>
@@ -61,7 +66,11 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
               className="edit-field"
               title="title"
             />
-            <ErrorMessage name={MOVIE_FIELDS.TITLE} component="div" className="error" />
+            <ErrorMessage
+              name={MOVIE_FIELDS.TITLE}
+              component="div"
+              className="error"
+            />
             <p className="edit-field-name">Release Date</p>
             <Field
               type="date"
@@ -70,7 +79,11 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
               className="edit-field"
               title="release_date"
             />
-            <ErrorMessage name={MOVIE_FIELDS.RELEASE_DATE} component="div" className="error" />
+            <ErrorMessage
+              name={MOVIE_FIELDS.RELEASE_DATE}
+              component="div"
+              className="error"
+            />
             <p className="edit-field-name">Movie URL</p>
             <Field
               type="text"
@@ -79,14 +92,20 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
               className="edit-field"
               title="poster_path"
             />
-            <ErrorMessage name={MOVIE_FIELDS.POSTER_PATH} component="div" className="error" />
+            <ErrorMessage
+              name={MOVIE_FIELDS.POSTER_PATH}
+              component="div"
+              className="error"
+            />
             <p className="edit-field-name">Genre</p>
             <Select
               type="text"
               name={MOVIE_FIELDS.GENRES}
               className="edit-field"
               value={genres}
-              onChange={(event) => onChangeGenres(event.target.value, formik.setFieldValue)}
+              onChange={(event) =>
+                onChangeGenres(event.target.value, formik.setFieldValue)
+              }
               multiple
               title="genres"
             >
@@ -96,7 +115,11 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
                 </MenuItem>
               ))}
             </Select>
-            <ErrorMessage name={MOVIE_FIELDS.GENRES} component="div" className="error" />
+            <ErrorMessage
+              name={MOVIE_FIELDS.GENRES}
+              component="div"
+              className="error"
+            />
             <p className="edit-field-name">Overview</p>
             <Field
               as="textarea"
@@ -105,7 +128,11 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
               className="edit-field"
               title="overview"
             />
-            <ErrorMessage name={MOVIE_FIELDS.OVERVIEW} component="div" className="error" />
+            <ErrorMessage
+              name={MOVIE_FIELDS.OVERVIEW}
+              component="div"
+              className="error"
+            />
             <p className="edit-field-name">Runtime</p>
             <Field
               type="number"
@@ -114,10 +141,19 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
               className="edit-field"
               title="runtime"
             />
-            <ErrorMessage name={MOVIE_FIELDS.RUNTIME} component="div" className="error" />
+            <ErrorMessage
+              name={MOVIE_FIELDS.RUNTIME}
+              component="div"
+              className="error"
+            />
           </DialogContent>
           <DialogActions>
-            <Button onClick={onCloseAddDialog} color="secondary" size="large" title="reset">
+            <Button
+              onClick={onCloseAddDialog}
+              color="secondary"
+              size="large"
+              title="reset"
+            >
               Reset
             </Button>
             <Button type="submit" color="primary" size="large">

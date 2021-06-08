@@ -1,4 +1,10 @@
-import { movieMock, movieMock1Updated, movieMock2, movies, message } from '../../../test/mocks';
+import {
+  movieMock,
+  movieMock1Updated,
+  movieMock2,
+  movies,
+  message,
+} from '../../../test/mocks';
 import * as actions from '../actions/movies';
 import * as types from '../actions/types';
 

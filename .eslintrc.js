@@ -19,6 +19,7 @@ module.exports = {
       'warn',
       {
         singleQuote: true,
+        parser: 'flow',
       },
     ],
     'max-len': [2, 120],
