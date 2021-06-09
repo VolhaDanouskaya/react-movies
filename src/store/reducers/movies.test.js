@@ -1,10 +1,4 @@
-import {
-  movieMock,
-  movieMock1Updated,
-  movieMock2,
-  movies,
-  message,
-} from '../../../test/mocks';
+import { movieMock, movieMock1Updated, movieMock2, movies, message } from '../../../test/mocks';
 import * as actions from '../actions/movies';
 import * as types from '../actions/types';
 
@@ -12,7 +6,14 @@ import moviesReducer from './movies';
 
 describe('test movies reducer', () => {
   test('expect the initial state', () => {
-    expect(moviesReducer(undefined, {})).toEqual([]);
+    expect(moviesReducer(null, {})).toEqual(null);
+  });
+
+  test('test non existent action', () => {
+    const action = {
+      type: 'ACTION',
+    };
+    expect(moviesReducer(null, action)).toEqual(null);
   });
 
   test('expect movies added to state', () => {
@@ -37,8 +38,9 @@ describe('test movies reducer', () => {
       type: types.UPDATE_MOVIE_SUCCESS,
       movie: movieMock1Updated,
     };
-    const updatedMovies = [movieMock1Updated];
-    expect(moviesReducer(movies, action)).toEqual(updatedMovies);
+    const updatedMovies = [movieMock1Updated, movieMock2];
+    const initMovies = [movieMock, movieMock2];
+    expect(moviesReducer(initMovies, action)).toEqual(updatedMovies);
   });
 
   test('expect deleted movie removed from state', () => {
@@ -48,7 +50,9 @@ describe('test movies reducer', () => {
     };
     expect(moviesReducer(movies, action)).toEqual([]);
   });
+});
 
+describe('test movies reducer actions', () => {
   test('expect load movies action', () => {
     const expectedAction = {
       type: types.LOAD_MOVIES_SUCCCESS,
