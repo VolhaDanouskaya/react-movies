@@ -9,7 +9,9 @@ describe('add movie functionality', () => {
   test('test dialog', () => {
     const onClose = jest.fn();
     const onAdd = jest.fn();
-    const { getByTitle } = render(<AddMovieDialog open onAdd={onAdd} onClose={onClose} />);
+    const { getByTitle } = render(
+      <AddMovieDialog open onAdd={onAdd} onClose={onClose} />
+    );
     expect(getByTitle('title')).toBeTruthy();
     expect(getByTitle('release_date')).toBeTruthy();
     expect(getByTitle('poster_path')).toBeTruthy();
@@ -21,7 +23,9 @@ describe('add movie functionality', () => {
   test('test reset button', () => {
     const onClose = jest.fn();
     const onAdd = jest.fn();
-    const { getByText } = render(<AddMovieDialog open onAdd={onAdd} onClose={onClose} />);
+    const { getByText } = render(
+      <AddMovieDialog open onAdd={onAdd} onClose={onClose} />
+    );
 
     fireEvent.click(getByText('Reset'));
     expect(onClose).toHaveBeenCalledTimes(1);
