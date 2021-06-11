@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test pagenotfound component whole pagenotfound 1`] = `
+exports[`test pagenotfound component whole pagenotfound should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="MuiContainer-root error-page MuiContainer-fixed MuiContainer-maxWidthLg"

@@ -10,14 +10,14 @@ describe('test pagenotfound component', () => {
     const { asFragment } = render(
       <Router>
         <PageNotFound />
-      </Router>,
+      </Router>
     );
     expect(
       asFragment(
         <Router>
           <PageNotFound />
-        </Router>,
-      ),
+        </Router>
+      )
     ).toMatchSnapshot();
   });
 
@@ -25,7 +25,7 @@ describe('test pagenotfound component', () => {
     const { getByTitle } = render(
       <Router>
         <PageNotFound />
-      </Router>,
+      </Router>
     );
     const linkText = getByTitle('linkToHome');
     expect(linkText).toMatchInlineSnapshot(`
