@@ -12,4 +12,5 @@ module.exports = {
   //   testURL: 'http://localhost',
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
   verbose: true,
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
 };
