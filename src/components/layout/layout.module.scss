@@ -1,0 +1,12 @@
+$white: #a9a9a9;
+$black: #232323;
+$pink: #f65261;
+$grey: #555555;
+
+.mainlayout {
+  display: flex;
+  flex-direction: column;
+  background-color: $grey;
+  color: $white;
+  font-family: Arial, Helvetica, sans-serif;
+}

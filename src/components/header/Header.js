@@ -1,20 +1,17 @@
-import { Container } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-
 import React, { useState } from 'react';
 
-import SearchBar from './searchBar/SearchBar';
-import AddMovieDialog from './AddMovieDialog';
-import MovieDetails from './movieDetails';
-
+import { Container } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import Image from 'next/image';
 import PropTypes from 'prop-types';
+import { Switch, Route, useHistory } from 'react-router-dom';
 
-/* eslint-disable import/no-absolute-path */
-import logo from '/public/images/logo.png';
-import './header.scss';
+import AddMovieDialog from './AddMovieDialog';
+import styles from './header.module.scss';
+import MovieDetails from './movieDetails';
+import SearchBar from './searchBar/SearchBar';
 
 const Header = ({ addMovie }) => {
   const [openAdd, setOpenAdd] = useState(false);
@@ -30,11 +27,11 @@ const Header = ({ addMovie }) => {
   };
 
   return (
-    <Container className="header" fixed>
+    <Container className={styles.header} fixed>
       <Switch>
         <Route path="/movies/:movieId">
-          <div className="subheader">
-            <img className="logo" src={logo} alt="" />
+          <div className={styles.subheader}>
+            <Image src="/public/images/logo.png" className={styles.logoFooter} width="150" height="50" />
             <IconButton onClick={() => history.push('/')}>
               <SearchIcon fontSize="large" />
             </IconButton>
@@ -42,21 +39,12 @@ const Header = ({ addMovie }) => {
           <MovieDetails />
         </Route>
         <Route path="/">
-          <div className="subheader">
-            <img className="logo" src={logo} alt="" />
-            <Button
-              id="button-add-movie"
-              variant="contained"
-              size="large"
-              onClick={onAddMovieClick}
-            >
+          <div className={styles.subheader}>
+            <Image src="/public/images/logo.png" className={styles.logoFooter} width="150" height="50" />
+            <Button id="button-add-movie" variant="contained" size="large" onClick={onAddMovieClick}>
               + Add Movie
             </Button>
-            <AddMovieDialog
-              open={openAdd}
-              onAdd={onAddMovie}
-              onClose={() => setOpenAdd(false)}
-            />
+            <AddMovieDialog open={openAdd} onAdd={onAddMovie} onClose={() => setOpenAdd(false)} />
           </div>
           <SearchBar />
         </Route>

@@ -1,14 +1,13 @@
-import { Container } from '@material-ui/core';
-
 import React from 'react';
-import './footer.scss';
 
-// eslint-disable-next-line import/no-absolute-path
-import logo from '/public/images/logo.png';
+import { Container } from '@material-ui/core';
+import Image from 'next/image';
+
+import styles from './footer.module.scss';
 
 const Footer = () => (
-  <Container className="footer" fixed>
-    <img className="logo-footer" src={logo} alt="" />
+  <Container className={styles.footer} fixed>
+    <Image src="/public/images/logo.png" className={styles.logoFooter} width="150" height="50" />
   </Container>
 );
 

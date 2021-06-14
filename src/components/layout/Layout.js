@@ -1,9 +1,9 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import './layout.scss';
+import styles from './layout.module.scss';
 
-const Layout = ({ children }) => <div className="main-layout">{children}</div>;
+const Layout = ({ children }) => <div className={styles.mainlayout}>{children}</div>;
 
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,

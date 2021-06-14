@@ -4,16 +4,17 @@ import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import PropTypes from 'prop-types';
-import './body.scss';
+
+import styles from './body.module.scss';
 
 const MoviesSorter = ({ onSortChange, selectedSort }) => {
   if (!selectedSort) {
     onSortChange('release_date');
   }
   return (
-    <div className="sort">
+    <div className={styles.sort}>
       <p>Sort by </p>
-      <FormControl className="sort-form">
+      <FormControl className={styles.sortForm}>
         <Select
           labelId="simple-select"
           id="simple-select"

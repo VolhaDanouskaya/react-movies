@@ -10,9 +10,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import DeleteMovieDialog from '../DeleteMovieDialog';
+import styles from '../movies.module.scss';
 import UpdateMovieDialog from '../UpdateMovieDialog';
-
-import '../movies.scss';
 
 const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -48,46 +47,28 @@ const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
   };
 
   return (
-    <li className="movie-card">
+    <li className="movieCard">
       <Link to={`/movies/${movie?.id}`}>
         <img src={movie?.poster_path} alt="" />
       </Link>
-      <div className="movie-info">
-        <div className="info-first-row">
+      <div className="movieInfo">
+        <div className="infoFirstRow">
           <p className="title">{movie?.title}</p>
-          <p className="movie-release-year">
-            {movie?.release_date?.split('-')[0]}
-          </p>
+          <p className="movieReleaseYear">{movie?.release_date?.split('-')[0]}</p>
         </div>
         <p className="genre">{movie?.genres?.join(', ')}</p>
       </div>
-      <IconButton
-        className="card-menu-icon"
-        aria-controls="simple-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
+      <IconButton className="card-menu-icon" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         <MoreVertIcon />
       </IconButton>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
+      <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
         <MenuItem onClick={onEditMenuItemClick} className="card-menu-item">
           edit
         </MenuItem>
         <MenuItem onClick={onDeleteMenuItemClick} className="card-menu-item">
           delete
         </MenuItem>
-        <UpdateMovieDialog
-          open={openEdit}
-          movie={movie}
-          onUpdate={onUpdateMovie}
-          onClose={() => setOpenEdit(false)}
-        />
+        <UpdateMovieDialog open={openEdit} movie={movie} onUpdate={onUpdateMovie} onClose={() => setOpenEdit(false)} />
         <DeleteMovieDialog
           open={openDelete}
           movieId={movie?.id}

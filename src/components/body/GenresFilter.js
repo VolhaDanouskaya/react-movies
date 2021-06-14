@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 import PropTypes from 'prop-types';
-import './body.scss';
+
+import styles from './body.module.scss';
 
 const genres = ['All', 'Adventure', 'Comedy', 'Drama', 'Fantasy'];
 
@@ -9,7 +10,7 @@ const GenresFilter = ({ onFilterClick, selectedFilter }) => {
   const [selected, setSelected] = useState(selectedFilter);
 
   return (
-    <div className="genres-filter">
+    <div className={styles.genresFilter}>
       {genres.map((genre) => (
         <button
           key={genre}
@@ -18,7 +19,7 @@ const GenresFilter = ({ onFilterClick, selectedFilter }) => {
             onFilterClick(genre);
             setSelected(genre);
           }}
-          className={`item ${genre === selected ? 'active' : ''}`}
+          className={`${styles}.item ${genre === selected ? 'active' : ''}`}
         >
           {genre}
         </button>

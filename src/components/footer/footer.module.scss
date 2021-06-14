@@ -1,0 +1,16 @@
+$white: #a9a9a9;
+$black: #232323;
+$pink: #f65261;
+$grey: #555555;
+$dark-grey: #424242;
+
+.footer {
+  margin-bottom: 40px;
+  height: 80px;
+  background-color: $dark-grey;
+
+  .logoFooter {
+    margin: 30px 0 0 500px;
+    max-width: 150px;
+  }
+}

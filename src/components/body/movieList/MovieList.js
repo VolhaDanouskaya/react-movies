@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import MovieCard from './movieCard';
 
 const MovieList = ({ movies }) => (
-  <ul className="movie-list">
+  <ul className="movieList">
     {movies?.map((movie) => (
       <MovieCard key={movie?.id} movie={movie} />
     ))}
@@ -27,7 +27,7 @@ MovieList.propTypes = {
       budget: PropTypes.number,
       revenue: PropTypes.number,
       runtime: PropTypes.number,
-    })
+    }),
   ).isRequired,
 };
 

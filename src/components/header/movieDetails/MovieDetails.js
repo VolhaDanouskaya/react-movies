@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import './movieDetails.scss';
+import styles from './movieDetails.module.scss';
 
 const MovieDetails = ({ movie, getMovie }) => {
   const { movieId } = useParams();
@@ -21,9 +21,7 @@ const MovieDetails = ({ movie, getMovie }) => {
         </div>
         <div className="tagline">{movie?.tagline}</div>
         <div className="third-row">
-          <div className="release-date">
-            {movie?.release_date?.split('-')[0]}
-          </div>
+          <div className="release-date">{movie?.release_date?.split('-')[0]}</div>
           <div className="runtime">{movie?.runtime} min</div>
         </div>
         <div className="overview">{movie?.overview}</div>

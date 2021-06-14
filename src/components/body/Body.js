@@ -7,10 +7,10 @@ import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 import useSessionStorage from '../../hooks/useSessionStorage';
 import ErrorBoundary from '../error/ErrorBoundary';
 
+import styles from './body.module.scss';
 import GenresFilter from './GenresFilter';
 import MovieList from './movieList/MovieList';
 import MoviesSorter from './MoviesSorter';
-import './body.scss';
 
 const Body = ({ movies, loadMovies }) => {
   const [currentFilter, setCurrentFilter] = useSessionStorage('filter');
@@ -31,12 +31,9 @@ const Body = ({ movies, loadMovies }) => {
   };
 
   return (
-    <Container className="body" fixed>
-      <div className="submenu">
-        <GenresFilter
-          onFilterClick={onFilterClick}
-          selectedFilter={currentFilter}
-        />
+    <Container className={styles.body} fixed>
+      <div className={styles.submenu}>
+        <GenresFilter onFilterClick={onFilterClick} selectedFilter={currentFilter} />
         <MoviesSorter onSortChange={onSortChange} selectedSort={currentSort} />
       </div>
       <Switch>
@@ -46,7 +43,7 @@ const Body = ({ movies, loadMovies }) => {
         <Route path="/movies">
           {!movies?.length ? (
             <div>
-              <p className="no-movies">No Movies Found</p>
+              <p className={styles.noMovies}>No Movies Found</p>
             </div>
           ) : (
             <ErrorBoundary>
@@ -77,7 +74,7 @@ Body.propTypes = {
       budget: PropTypes.number,
       revenue: PropTypes.number,
       runtime: PropTypes.number,
-    })
+    }),
   ).isRequired,
   loadMovies: PropTypes.func.isRequired,
 };

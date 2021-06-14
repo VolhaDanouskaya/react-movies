@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const useSessionStorage = (storageKey) => {
-  const [value, setValue] = useState(sessionStorage.getItem(storageKey));
+  const [value, setValue] = useState(process.browser ? sessionStorage.getItem(storageKey) : null);
 
   useEffect(() => {
     if (value) {

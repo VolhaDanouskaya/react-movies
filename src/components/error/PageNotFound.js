@@ -1,22 +1,22 @@
 import React from 'react';
 
 import { Container } from '@material-ui/core';
+import Image from 'next/image';
+import { Link } from 'react-router-dom';
 
 import Footer from '../footer/Footer';
 
-import { Link } from 'react-router-dom';
+import styles from './error.module.scss';
 
-/* eslint-disable import/no-absolute-path */
-import logo from '/public/images/logo.png';
-import './error.scss';
+<Image src="/public/images/logo.png" className="logo-footer" />;
 
 const PageNotFound = () => (
   <>
-    <Container className="error-page" fixed>
-      <img className="logo" src={logo} alt="" />
-      <div className="error-content">
-        <p className="error">Page Not Found</p>
-        <Link to="/movies" className="home-link" title="linkToHome">
+    <Container className={styles.errorPage} fixed>
+      <Image src="/public/images/logo.png" width="150" height="50" />
+      <div className={styles.errorContent}>
+        <p className={styles.error}>Page Not Found</p>
+        <Link to="/movies" className={styles.homeLink} title="linkToHome">
           Go Back To Home
         </Link>
       </div>

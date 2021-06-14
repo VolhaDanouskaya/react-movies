@@ -1,0 +1,160 @@
+$white: #a9a9a9;
+$black: #232323;
+$pink: #f65261;
+$grey: #555555;
+
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  justify-content: start;
+}
+
+.movieCard {
+  position: relative;
+  margin: 0 50px 30px 0;
+
+  img {
+    height: 360px;
+    width: 240px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .cardMenuIcon {
+    display: none;
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    padding: 6px;
+    background: $black;
+    color: $white;
+
+    &:hover {
+      background: $black;
+      color: $white;
+    }
+  }
+
+  &:hover .cardMenuIcon {
+    display: block;
+  }
+
+  .movieInfo {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 240px;
+  }
+
+  .title {
+    font-size: 16px;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .infoFirstRow {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .movieReleaseYear {
+    border-style: solid;
+    border-radius: 6px;
+    padding: 4px 8px;
+    border-color: $grey;
+    border-width: 2px;
+    font-size: 13px;
+  }
+
+  .genre {
+    font-size: 13px;
+  }
+}
+
+.MuiPaper-root.MuiMenu-paper.MuiPopover-paper {
+  background: $black;
+  color: white;
+}
+
+.MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.card-menu-item:hover {
+  background-color: $pink;
+}
+
+.MuiPaper-root.MuiDialog-paper {
+  width: 600px;
+  background-color: $black;
+  color: #a9a9a9;
+  font-family: Arial, Helvetica, sans-serif;
+
+  .MuiInput-underline:after {
+    content: none;
+  }
+
+  .dialog-form-content {
+    margin-left: 50px;
+  }
+  .edit-field-name {
+    color: $pink;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+
+  .edit-field {
+    width: 400px;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: $grey;
+    height: 55px;
+    padding: 5px 0 5px 5px;
+
+    ::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+      color: $pink;
+    }
+
+    .MuiSelect-icon {
+      color: $pink;
+    }
+  }
+
+  .error {
+    color: $pink;
+  }
+
+  .MuiIconButton-root {
+    width: 50px;
+    margin-left: auto;
+    color: #a9a9a9;
+  }
+
+  .MuiTypography-h6 {
+    text-transform: uppercase;
+    font-size: 26px;
+    margin-left: 50px;
+  }
+
+  .MuiTypography-colorTextSecondary {
+    color: #a9a9a9;
+    font-size: 20px;
+  }
+
+  .MuiDialogActions-spacing {
+    margin: 20px;
+
+    .MuiButton-textPrimary {
+      background-color: $pink;
+      color: white;
+    }
+
+    .MuiButton-textSecondary {
+      border: 2px solid;
+      border-radius: 7px;
+    }
+  }
+}

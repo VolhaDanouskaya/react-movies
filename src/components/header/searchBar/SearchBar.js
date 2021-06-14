@@ -3,7 +3,8 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { Formik, Form, Field } from 'formik';
 import { useHistory } from 'react-router-dom';
-import './searchBar.scss';
+
+import styles from './searchBar.module.scss';
 
 const SearchBar = () => {
   const history = useHistory();
@@ -13,8 +14,8 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="search-bar">
-      <p className="title">find your movie</p>
+    <div className={styles.searchBar}>
+      <p className={styles.title}>find your movie</p>
       <Formik
         initialValues={{
           query: '',
@@ -24,13 +25,7 @@ const SearchBar = () => {
         }}
       >
         <Form>
-          <Field
-            type="search"
-            variant="filled"
-            color="secondary"
-            id="search-input"
-            name="query"
-          />
+          <Field type="search" variant="filled" color="secondary" id="search-input" name="query" />
           <Button variant="contained" type="submit">
             Search
           </Button>
