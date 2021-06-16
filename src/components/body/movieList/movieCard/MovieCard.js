@@ -47,18 +47,23 @@ const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
   };
 
   return (
-    <li className="movieCard">
+    <li className={styles.movieCard}>
       <Link to={`/movies/${movie?.id}`}>
         <img src={movie?.poster_path} alt="" />
       </Link>
-      <div className="movieInfo">
-        <div className="infoFirstRow">
-          <p className="title">{movie?.title}</p>
-          <p className="movieReleaseYear">{movie?.release_date?.split('-')[0]}</p>
+      <div className={styles.movieInfo}>
+        <div className={styles.infoFirstRow}>
+          <p className={styles.title}>{movie?.title}</p>
+          <p className={styles.movieReleaseYear}>{movie?.release_date?.split('-')[0]}</p>
         </div>
-        <p className="genre">{movie?.genres?.join(', ')}</p>
+        <p className={styles.genre}>{movie?.genres?.join(', ')}</p>
       </div>
-      <IconButton className="card-menu-icon" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+      <IconButton
+        className={styles.cardMenuIcon}
+        aria-controls="simple-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
         <MoreVertIcon />
       </IconButton>
       <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
+
 import styles from './movieDetails.module.scss';
 
 const MovieDetails = ({ movie, getMovie }) => {
@@ -12,19 +13,19 @@ const MovieDetails = ({ movie, getMovie }) => {
   }, [movieId, getMovie]);
 
   return (
-    <div className="movie-details">
-      <img src={movie?.poster_path} alt="" className="poster" />
-      <div className="info">
-        <div className="first-row">
-          <h1 className="title">{movie?.title}</h1>
-          <div className="rating">{movie?.vote_average}</div>
+    <div className={styles.movieDetails}>
+      <img src={movie?.poster_path} alt="" className={styles.poster} />
+      <div className={styles.info}>
+        <div className={styles.firstRow}>
+          <h1 className={styles.title}>{movie?.title}</h1>
+          <div className={styles.rating}>{movie?.vote_average}</div>
         </div>
-        <div className="tagline">{movie?.tagline}</div>
-        <div className="third-row">
-          <div className="release-date">{movie?.release_date?.split('-')[0]}</div>
-          <div className="runtime">{movie?.runtime} min</div>
+        <div className={styles.tagline}>{movie?.tagline}</div>
+        <div className={styles.thirdRow}>
+          <div className={styles.releaseDate}>{movie?.release_date?.split('-')[0]}</div>
+          <div className={styles.runtime}>{movie?.runtime} min</div>
         </div>
-        <div className="overview">{movie?.overview}</div>
+        <div className={styles.overview}>{movie?.overview}</div>
       </div>
     </div>
   );

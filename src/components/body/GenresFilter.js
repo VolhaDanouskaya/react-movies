@@ -19,7 +19,7 @@ const GenresFilter = ({ onFilterClick, selectedFilter }) => {
             onFilterClick(genre);
             setSelected(genre);
           }}
-          className={`${styles}.item ${genre === selected ? 'active' : ''}`}
+          className={styles.item}
         >
           {genre}
         </button>

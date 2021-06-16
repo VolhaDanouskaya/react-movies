@@ -25,7 +25,7 @@ const SearchBar = () => {
         }}
       >
         <Form>
-          <Field type="search" variant="filled" color="secondary" id="search-input" name="query" />
+          <Field type="search" variant="filled" color="secondary" id={styles.searchInput} name="query" />
           <Button variant="contained" type="submit">
             Search
           </Button>

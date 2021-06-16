@@ -3,9 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import MovieCard from './movieCard';
+import styles from './movies.module.scss';
 
 const MovieList = ({ movies }) => (
-  <ul className="movieList">
+  <ul className={styles.movieList}>
     {movies?.map((movie) => (
       <MovieCard key={movie?.id} movie={movie} />
     ))}

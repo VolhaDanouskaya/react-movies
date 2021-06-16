@@ -4,7 +4,7 @@ $pink: #f65261;
 $grey: #555555;
 $dark-grey: #424242;
 
-.movie-details {
+.movieDetails {
   display: flex;
   flex-direction: row;
 
@@ -16,7 +16,7 @@ $dark-grey: #424242;
   .info {
     margin: 0;
 
-    .first-row {
+    .firstRow {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -38,14 +38,14 @@ $dark-grey: #424242;
       }
     }
 
-    .third-row {
+    .thirdRow {
       display: flex;
       flex-direction: row;
       color: $pink;
       font-size: 24px;
       margin: 20px 0;
 
-      .release-date {
+      .releaseDate {
         margin-right: 20px;
       }
 
@@ -56,7 +56,7 @@ $dark-grey: #424242;
   }
 }
 
-.movie-details.dark::after {
+.movieDetails.dark::after {
   position: absolute;
   z-index: 0;
   content: '';
