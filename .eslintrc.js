@@ -22,6 +22,8 @@ module.exports = {
         parser: 'flow',
       },
     ],
+    'react/forbid-prop-types': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'max-len': [2, 120],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],

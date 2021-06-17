@@ -18,8 +18,8 @@ const Body = ({ movies, loadMovies }) => {
   const { query } = useRouter();
 
   useEffect(() => {
-    loadMovies(currentFilter, currentSort, query);
-  }, [currentFilter, currentSort, query, loadMovies]);
+    loadMovies(currentFilter, currentSort, query.search);
+  }, [currentFilter, currentSort, query.search, loadMovies]);
 
   const onFilterClick = (genre) => {
     setCurrentFilter(genre);
@@ -32,7 +32,10 @@ const Body = ({ movies, loadMovies }) => {
   return (
     <Container className={styles.body} fixed>
       <div className={styles.submenu}>
-        <GenresFilter onFilterClick={onFilterClick} selectedFilter={currentFilter} />
+        <GenresFilter
+          onFilterClick={onFilterClick}
+          selectedFilter={currentFilter}
+        />
         <MoviesSorter onSortChange={onSortChange} selectedSort={currentSort} />
       </div>
       {!movies?.length ? (
@@ -63,7 +66,7 @@ Body.propTypes = {
       budget: PropTypes.number,
       revenue: PropTypes.number,
       runtime: PropTypes.number,
-    }),
+    })
   ).isRequired,
   loadMovies: PropTypes.func.isRequired,
 };

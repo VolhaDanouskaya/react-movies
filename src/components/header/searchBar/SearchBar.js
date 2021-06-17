@@ -8,9 +8,8 @@ import styles from './searchBar.module.scss';
 
 const SearchBar = () => {
   const router = useRouter();
-
   const onSearchMovies = (query) => {
-    router.replace(`/movies?search=${query}`);
+    router.push(`/movies?search=${query}`);
   };
 
   return (
@@ -25,7 +24,13 @@ const SearchBar = () => {
         }}
       >
         <Form>
-          <Field type="search" variant="filled" color="secondary" id={styles['search-input']} name="query" />
+          <Field
+            type="search"
+            variant="filled"
+            color="secondary"
+            id={styles['search-input']}
+            name="query"
+          />
           <Button variant="contained" type="submit">
             Search
           </Button>

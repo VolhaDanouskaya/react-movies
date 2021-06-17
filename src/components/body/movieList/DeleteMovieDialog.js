@@ -16,13 +16,21 @@ const DeleteMovieDialog = ({ open, movieId, onClose, onDelete }) => {
   };
 
   return (
-    <Dialog disableBackdropClick disableEscapeKeyDown open={open} onClose={onCloseDeleteDialog} maxWidth="lg">
+    <Dialog
+      disableBackdropClick
+      disableEscapeKeyDown
+      open={open}
+      onClose={onCloseDeleteDialog}
+      maxWidth="lg"
+    >
       <IconButton aria-label="close" onClick={onCloseDeleteDialog}>
         <CloseIcon />
       </IconButton>
       <DialogTitle id="alert-dialog-title">Delete Movie</DialogTitle>
       <DialogContent className="dialog-form-content">
-        <DialogContentText id="alert-dialog-description">Are you sure you want to delete this movie?</DialogContentText>
+        <DialogContentText id="alert-dialog-description">
+          Are you sure you want to delete this movie?
+        </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={() => onDelete(movieId)} color="primary" size="large">

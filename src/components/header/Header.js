@@ -42,10 +42,19 @@ const Header = ({ addMovie }) => {
         <>
           <div className={styles.subheader}>
             <img src="/images/logo.png" className={styles.logo} alt="logo" />
-            <Button variant="contained" size="large" onClick={onAddMovieClick} className={styles['button-add-movie']}>
+            <Button
+              variant="contained"
+              size="large"
+              onClick={onAddMovieClick}
+              className={styles['button-add-movie']}
+            >
               + Add Movie
             </Button>
-            <AddMovieDialog open={openAdd} onAdd={onAddMovie} onClose={() => setOpenAdd(false)} />
+            <AddMovieDialog
+              open={openAdd}
+              onAdd={onAddMovie}
+              onClose={() => setOpenAdd(false)}
+            />
           </div>
           <SearchBar />
         </>

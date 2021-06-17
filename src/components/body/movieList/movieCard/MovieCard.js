@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
 
 import IconButton from '@material-ui/core/IconButton';
@@ -54,7 +52,9 @@ const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
       <div className={styles['movie-info']}>
         <div className={styles['info-first-row']}>
           <p className={styles.title}>{movie?.title}</p>
-          <p className={styles['movie-release-year']}>{movie?.release_date?.split('-')[0]}</p>
+          <p className={styles['movie-release-year']}>
+            {movie?.release_date?.split('-')[0]}
+          </p>
         </div>
         <p className={styles.genre}>{movie?.genres?.join(', ')}</p>
       </div>
@@ -66,14 +66,25 @@ const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
       >
         <MoreVertIcon />
       </IconButton>
-      <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
         <MenuItem onClick={onEditMenuItemClick} className="card-menu-item">
           edit
         </MenuItem>
         <MenuItem onClick={onDeleteMenuItemClick} className="card-menu-item">
           delete
         </MenuItem>
-        <UpdateMovieDialog open={openEdit} movie={movie} onUpdate={onUpdateMovie} onClose={() => setOpenEdit(false)} />
+        <UpdateMovieDialog
+          open={openEdit}
+          movie={movie}
+          onUpdate={onUpdateMovie}
+          onClose={() => setOpenEdit(false)}
+        />
         <DeleteMovieDialog
           open={openDelete}
           movieId={movie?.id}
