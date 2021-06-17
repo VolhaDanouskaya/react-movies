@@ -4,9 +4,9 @@ import { Container } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { Switch, Route, useHistory } from 'react-router-dom';
 
 import AddMovieDialog from './AddMovieDialog';
 import styles from './header.module.scss';
@@ -15,8 +15,6 @@ import SearchBar from './searchBar/SearchBar';
 
 const Header = ({ addMovie }) => {
   const [openAdd, setOpenAdd] = useState(false);
-  const history = useHistory();
-  const isServer = typeof window === 'undefined';
 
   const onAddMovieClick = () => {
     setOpenAdd(true);
@@ -28,48 +26,30 @@ const Header = ({ addMovie }) => {
   };
   return (
     <Container className={styles.header} fixed>
-      <Switch>
-        <Route path="/movies/:movieId">
+      {useRouter().pathname.includes('movieId') ? (
+        <>
           <div className={styles.subheader}>
             <img src="/images/logo.png" className={styles.logo} alt="logo" />
-            <IconButton onClick={() => history.push('/')}>
-              <SearchIcon fontSize="large" />
-            </IconButton>
+            <Link href="/">
+              <IconButton>
+                <SearchIcon fontSize="large" />
+              </IconButton>
+            </Link>
           </div>
-          {isServer ? (
-            useRouter().pathname.includes('movieId') ? (
-              <MovieDetails />
-            ) : null
-          ) : (
-            <MovieDetails />
-          )}
-        </Route>
-        <Route path="/">
+          <MovieDetails />
+        </>
+      ) : (
+        <>
           <div className={styles.subheader}>
             <img src="/images/logo.png" className={styles.logo} alt="logo" />
-            <Button
-              variant="contained"
-              size="large"
-              onClick={onAddMovieClick}
-              className={styles['button-add-movie']}
-            >
+            <Button variant="contained" size="large" onClick={onAddMovieClick} className={styles['button-add-movie']}>
               + Add Movie
             </Button>
-            <AddMovieDialog
-              open={openAdd}
-              onAdd={onAddMovie}
-              onClose={() => setOpenAdd(false)}
-            />
+            <AddMovieDialog open={openAdd} onAdd={onAddMovie} onClose={() => setOpenAdd(false)} />
           </div>
-          {isServer ? (
-            useRouter().pathname.includes('movieId') ? null : (
-              <SearchBar />
-            )
-          ) : (
-            <SearchBar />
-          )}
-        </Route>
-      </Switch>
+          <SearchBar />
+        </>
+      )}
     </Container>
   );
 };

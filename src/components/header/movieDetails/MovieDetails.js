@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
 
 import styles from './movieDetails.module.scss';
 
 const MovieDetails = ({ movie, getMovie }) => {
-  const { movieId } = useParams();
+  const router = useRouter();
+  const { movieId } = router.query;
 
   useEffect(() => {
     getMovie(Number(movieId));

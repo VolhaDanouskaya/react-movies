@@ -6,8 +6,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import DeleteMovieDialog from '../DeleteMovieDialog';
 import styles from '../movies.module.scss';
@@ -48,7 +48,7 @@ const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
 
   return (
     <li className={styles['movie-card']}>
-      <Link to={`/movies/${movie?.id}`}>
+      <Link href={`/movies/${movie?.id}`}>
         <img src={movie?.poster_path} alt="" />
       </Link>
       <div className={styles['movie-info']}>

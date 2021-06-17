@@ -2,15 +2,15 @@ import React from 'react';
 
 import Button from '@material-ui/core/Button';
 import { Formik, Form, Field } from 'formik';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 import styles from './searchBar.module.scss';
 
 const SearchBar = () => {
-  const history = useHistory();
+  const router = useRouter();
 
   const onSearchMovies = (query) => {
-    history.push(`/movies?search=${query}`);
+    router.replace(`/movies?search=${query}`);
   };
 
   return (

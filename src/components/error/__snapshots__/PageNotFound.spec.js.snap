@@ -3,15 +3,15 @@
 exports[`test pagenotfound component whole pagenotfound should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiContainer-root error-page MuiContainer-fixed MuiContainer-maxWidthLg"
+    class="MuiContainer-root errorPage MuiContainer-fixed MuiContainer-maxWidthLg"
   >
     <img
-      alt=""
+      alt="logo"
       class="logo"
-      src=""
+      src="/images/logo.png"
     />
     <div
-      class="error-content"
+      class="errorContent"
     >
       <p
         class="error"
@@ -19,9 +19,7 @@ exports[`test pagenotfound component whole pagenotfound should match snapshot 1`
         Page Not Found
       </p>
       <a
-        class="home-link"
-        href="/movies"
-        title="linkToHome"
+        href="/"
       >
         Go Back To Home
       </a>
@@ -31,9 +29,9 @@ exports[`test pagenotfound component whole pagenotfound should match snapshot 1`
     class="MuiContainer-root footer MuiContainer-fixed MuiContainer-maxWidthLg"
   >
     <img
-      alt=""
+      alt="logo"
       class="logo-footer"
-      src=""
+      src="/images/logo.png"
     />
   </div>
 </DocumentFragment>

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 
 import { Container } from '@material-ui/core';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 
 import useSessionStorage from '../../hooks/useSessionStorage';
 import ErrorBoundary from '../error/ErrorBoundary';
@@ -15,8 +15,7 @@ import MoviesSorter from './MoviesSorter';
 const Body = ({ movies, loadMovies }) => {
   const [currentFilter, setCurrentFilter] = useSessionStorage('filter');
   const [currentSort, setCurrentSort] = useSessionStorage('sort');
-  const searchQuery = useLocation().search;
-  const query = new URLSearchParams(searchQuery).get('search');
+  const { query } = useRouter();
 
   useEffect(() => {
     loadMovies(currentFilter, currentSort, query);
@@ -36,25 +35,15 @@ const Body = ({ movies, loadMovies }) => {
         <GenresFilter onFilterClick={onFilterClick} selectedFilter={currentFilter} />
         <MoviesSorter onSortChange={onSortChange} selectedSort={currentSort} />
       </div>
-      <Switch>
-        <Route path="/" exact>
-          <Redirect to="/movies" />
-        </Route>
-        <Route path="/movies">
-          {!movies?.length ? (
-            <div>
-              <p className={styles['no-movies']}>No Movies Found</p>
-            </div>
-          ) : (
-            <ErrorBoundary>
-              <MovieList movies={movies} />
-            </ErrorBoundary>
-          )}
-        </Route>
-        <Route path="*">
-          <Redirect to="/pagenotfound" />
-        </Route>
-      </Switch>
+      {!movies?.length ? (
+        <div>
+          <p className={styles['no-movies']}>No Movies Found</p>
+        </div>
+      ) : (
+        <ErrorBoundary>
+          <MovieList movies={movies} />
+        </ErrorBoundary>
+      )}
     </Container>
   );
 };

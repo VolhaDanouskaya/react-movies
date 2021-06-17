@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Container } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import Footer from '../footer/Footer';
 
@@ -13,7 +13,7 @@ const PageNotFound = () => (
       <img src="/images/logo.png" className={styles.logo} alt="logo" />
       <div className={styles.errorContent}>
         <p className={styles.error}>Page Not Found</p>
-        <Link to="/movies" className={styles.homeLink} title="linkToHome">
+        <Link href="/" className={styles.homeLink} title="linkToHome">
           Go Back To Home
         </Link>
       </div>
