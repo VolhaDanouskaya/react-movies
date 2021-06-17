@@ -6,7 +6,7 @@ import styles from './footer.module.scss';
 
 const Footer = () => (
   <Container className={styles.footer} fixed>
-    <img src="/images/logo.png" className={styles.logoFooter} alt="logo" />
+    <img src="/images/logo.png" className={styles['logo-footer']} alt="logo" />
   </Container>
 );
 

@@ -59,27 +59,53 @@ const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
         </IconButton>
         <Form>
           <DialogTitle>Edit Movie</DialogTitle>
-          <DialogContent className={styles['dialog-form-content']}>
+          <DialogContent className="dialog-form-content">
             <p className={styles['edit-field-name']}>Movie ID</p>
             <p className={styles['edit-field-name']} style={{ color: 'white' }}>
               {movie?.id}
             </p>
             <p className={styles['edit-field-name']}>Title</p>
-            <Field name={MOVIE_FIELDS.TITLE} type="text" className={styles['edit-field']} />
-            <ErrorMessage name={MOVIE_FIELDS.TITLE} component="div" className="error" />
+            <Field
+              name={MOVIE_FIELDS.TITLE}
+              type="text"
+              className={styles['edit-field']}
+            />
+            <ErrorMessage
+              name={MOVIE_FIELDS.TITLE}
+              component="div"
+              className="error"
+            />
             <p className={styles['edit-field-name']}>Release Date</p>
-            <Field name={MOVIE_FIELDS.RELEASE_DATE} type="date" className={styles['edit-field']} />
-            <ErrorMessage name={MOVIE_FIELDS.RELEASE_DATE} component="div" className="error" />
+            <Field
+              name={MOVIE_FIELDS.RELEASE_DATE}
+              type="date"
+              className={styles['edit-field']}
+            />
+            <ErrorMessage
+              name={MOVIE_FIELDS.RELEASE_DATE}
+              component="div"
+              className="error"
+            />
             <p className={styles['edit-field-name']}>Movie URL</p>
-            <Field name={MOVIE_FIELDS.POSTER_PATH} type="text" className={styles['edit-field']} />
-            <ErrorMessage name={MOVIE_FIELDS.POSTER_PATH} component="div" className="error" />
+            <Field
+              name={MOVIE_FIELDS.POSTER_PATH}
+              type="text"
+              className={styles['edit-field']}
+            />
+            <ErrorMessage
+              name={MOVIE_FIELDS.POSTER_PATH}
+              component="div"
+              className="error"
+            />
             <p className={styles['edit-field-name']}>Genre</p>
             <Select
               type="text"
               name={MOVIE_FIELDS.GENRES}
               className={styles['edit-field']}
               value={genres}
-              onChange={(event) => onChangeGenres(event.target.value, formik.setFieldValue)}
+              onChange={(event) =>
+                onChangeGenres(event.target.value, formik.setFieldValue)
+              }
               multiple
             >
               {genresArray.map((genre) => (
@@ -88,7 +114,11 @@ const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
                 </MenuItem>
               ))}
             </Select>
-            <ErrorMessage name={MOVIE_FIELDS.GENRES} component="div" className="error" />
+            <ErrorMessage
+              name={MOVIE_FIELDS.GENRES}
+              component="div"
+              className="error"
+            />
             <p className={styles['edit-field-name']}>Overview</p>
             <Field
               as="textarea"
@@ -96,10 +126,22 @@ const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
               aria-label="empty textarea"
               className={styles['edit-field']}
             />
-            <ErrorMessage name={MOVIE_FIELDS.OVERVIEW} component="div" className="error" />
+            <ErrorMessage
+              name={MOVIE_FIELDS.OVERVIEW}
+              component="div"
+              className="error"
+            />
             <p className={styles['edit-field-name']}>Runtime</p>
-            <Field name={MOVIE_FIELDS.RUNTIME} type="number" className={styles['edit-field']} />
-            <ErrorMessage name={MOVIE_FIELDS.RUNTIME} component="div" className="error" />
+            <Field
+              name={MOVIE_FIELDS.RUNTIME}
+              type="number"
+              className={styles['edit-field']}
+            />
+            <ErrorMessage
+              name={MOVIE_FIELDS.RUNTIME}
+              component="div"
+              className="error"
+            />
           </DialogContent>
           <DialogActions>
             <Button onClick={onCloseEditDialog} color="secondary" size="large">

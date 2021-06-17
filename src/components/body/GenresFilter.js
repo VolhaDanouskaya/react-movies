@@ -10,20 +10,23 @@ const GenresFilter = ({ onFilterClick, selectedFilter }) => {
   const [selected, setSelected] = useState(selectedFilter);
 
   return (
-    <div className={styles.genresFilter}>
-      {genres.map((genre) => (
-        <button
-          key={genre}
-          type="button"
-          onClick={() => {
-            onFilterClick(genre);
-            setSelected(genre);
-          }}
-          className={styles.item}
-        >
-          {genre}
-        </button>
-      ))}
+    <div className={styles['genres-filter']}>
+      {genres.map((genre) => {
+        const activeClass = `${genre === selected ? 'item-active' : 'item'}`;
+        return (
+          <button
+            key={genre}
+            type="button"
+            onClick={() => {
+              onFilterClick(genre);
+              setSelected(genre);
+            }}
+            className={styles[activeClass]}
+          >
+            {genre}
+          </button>
+        );
+      })}
     </div>
   );
 };

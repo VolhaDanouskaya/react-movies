@@ -1,10 +1,8 @@
 import React from 'react';
 
-import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route, BrowserRouter, Switch, StaticRouter } from 'react-router-dom';
 
-// import '../components/error/error.scss';
 import Body from '../components/body';
 import PageNotFound from '../components/error/PageNotFound';
 import Footer from '../components/footer/Footer';
@@ -19,18 +17,11 @@ const App = () => {
     return (
       <StaticRouter>
         <Layout>
-          <Switch>
-            <Route exact path="/pagenotfound">
-              <PageNotFound />
-            </Route>
-            <Route path="/">
-              <Provider store={store}>
-                <Header />
-                <Body />
-                <Footer />
-              </Provider>
-            </Route>
-          </Switch>
+          <Provider store={store}>
+            <Header />
+            <Body />
+            <Footer />
+          </Provider>
         </Layout>
       </StaticRouter>
     );

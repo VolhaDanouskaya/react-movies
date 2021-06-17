@@ -36,17 +36,38 @@ const Header = ({ addMovie }) => {
               <SearchIcon fontSize="large" />
             </IconButton>
           </div>
-          {isServer ? useRouter().pathname.includes('movieId') ? <MovieDetails /> : null : <MovieDetails />}
+          {isServer ? (
+            useRouter().pathname.includes('movieId') ? (
+              <MovieDetails />
+            ) : null
+          ) : (
+            <MovieDetails />
+          )}
         </Route>
         <Route path="/">
           <div className={styles.subheader}>
             <img src="/images/logo.png" className={styles.logo} alt="logo" />
-            <Button id="button-add-movie" variant="contained" size="large" onClick={onAddMovieClick}>
+            <Button
+              variant="contained"
+              size="large"
+              onClick={onAddMovieClick}
+              className={styles['button-add-movie']}
+            >
               + Add Movie
             </Button>
-            <AddMovieDialog open={openAdd} onAdd={onAddMovie} onClose={() => setOpenAdd(false)} />
+            <AddMovieDialog
+              open={openAdd}
+              onAdd={onAddMovie}
+              onClose={() => setOpenAdd(false)}
+            />
           </div>
-          {isServer ? useRouter().pathname.includes('movieId') ? null : <SearchBar /> : <SearchBar />}
+          {isServer ? (
+            useRouter().pathname.includes('movieId') ? null : (
+              <SearchBar />
+            )
+          ) : (
+            <SearchBar />
+          )}
         </Route>
       </Switch>
     </Container>

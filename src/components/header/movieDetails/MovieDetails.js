@@ -13,16 +13,16 @@ const MovieDetails = ({ movie, getMovie }) => {
   }, [movieId, getMovie]);
 
   return (
-    <div className={styles.movieDetails}>
+    <div className={styles['movie-details']}>
       <img src={movie?.poster_path} alt="" className={styles.poster} />
       <div className={styles.info}>
-        <div className={styles.firstRow}>
+        <div className={styles['first-row']}>
           <h1 className={styles.title}>{movie?.title}</h1>
           <div className={styles.rating}>{movie?.vote_average}</div>
         </div>
         <div className={styles.tagline}>{movie?.tagline}</div>
-        <div className={styles.thirdRow}>
-          <div className={styles.releaseDate}>{movie?.release_date?.split('-')[0]}</div>
+        <div className={styles['third-row']}>
+          <div className={styles['release-date']}>{movie?.release_date?.split('-')[0]}</div>
           <div className={styles.runtime}>{movie?.runtime} min</div>
         </div>
         <div className={styles.overview}>{movie?.overview}</div>

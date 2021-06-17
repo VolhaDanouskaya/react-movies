@@ -3,14 +3,14 @@ $black: #232323;
 $pink: #f65261;
 $grey: #555555;
 
-.movieList {
+.movie-list {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
   justify-content: start;
 }
 
-.movieCard {
+.movie-card {
   position: relative;
   margin: 0 50px 30px 0;
 
@@ -23,7 +23,7 @@ $grey: #555555;
     }
   }
 
-  .cardMenuIcon {
+  .card-menu-icon {
     display: none;
     position: absolute;
     top: 4px;
@@ -38,11 +38,11 @@ $grey: #555555;
     }
   }
 
-  &:hover .cardMenuIcon {
+  &:hover .card-menu-icon {
     display: block;
   }
 
-  .movieInfo {
+  .movie-info {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -57,12 +57,12 @@ $grey: #555555;
     text-overflow: ellipsis;
   }
 
-  .infoFirstRow {
+  .info-first-row {
     display: flex;
     justify-content: space-between;
   }
 
-  .movieReleaseYear {
+  .movie-release-year {
     border-style: solid;
     border-radius: 6px;
     padding: 4px 8px;

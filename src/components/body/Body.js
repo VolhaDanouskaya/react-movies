@@ -43,7 +43,7 @@ const Body = ({ movies, loadMovies }) => {
         <Route path="/movies">
           {!movies?.length ? (
             <div>
-              <p className={styles.noMovies}>No Movies Found</p>
+              <p className={styles['no-movies']}>No Movies Found</p>
             </div>
           ) : (
             <ErrorBoundary>

@@ -6,7 +6,7 @@ import MovieCard from './movieCard';
 import styles from './movies.module.scss';
 
 const MovieList = ({ movies }) => (
-  <ul className={styles.movieList}>
+  <ul className={styles['movie-list']}>
     {movies?.map((movie) => (
       <MovieCard key={movie?.id} movie={movie} />
     ))}

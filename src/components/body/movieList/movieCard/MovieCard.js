@@ -47,19 +47,19 @@ const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
   };
 
   return (
-    <li className={styles.movieCard}>
+    <li className={styles['movie-card']}>
       <Link to={`/movies/${movie?.id}`}>
         <img src={movie?.poster_path} alt="" />
       </Link>
-      <div className={styles.movieInfo}>
-        <div className={styles.infoFirstRow}>
+      <div className={styles['movie-info']}>
+        <div className={styles['info-first-row']}>
           <p className={styles.title}>{movie?.title}</p>
-          <p className={styles.movieReleaseYear}>{movie?.release_date?.split('-')[0]}</p>
+          <p className={styles['movie-release-year']}>{movie?.release_date?.split('-')[0]}</p>
         </div>
         <p className={styles.genre}>{movie?.genres?.join(', ')}</p>
       </div>
       <IconButton
-        className={styles.cardMenuIcon}
+        className={styles['card-menu-icon']}
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}

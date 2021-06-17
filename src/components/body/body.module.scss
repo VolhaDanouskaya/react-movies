@@ -49,7 +49,7 @@ $dark-grey: #424242;
     }
   }
 
-  .genresFilter {
+  .genres-filter {
     display: flex;
     flex-wrap: wrap;
     margin: 20px 0 10px 0;
@@ -63,11 +63,20 @@ $dark-grey: #424242;
       color: $white;
       text-transform: uppercase;
 
-      &.active,
       &:hover {
         color: white;
         cursor: pointer;
       }
+    }
+
+    .item-active {
+      margin-right: 10px;
+      background-color: $black;
+      border: none;
+      color: $white;
+      text-transform: uppercase;
+      color: white;
+      cursor: pointer;
     }
   }
 
@@ -75,7 +84,7 @@ $dark-grey: #424242;
     margin: 20px 0 20px 40px;
   }
 
-  .noMovies {
+  .no-movies {
     margin-top: 200px;
     font-size: 50px;
     text-align: center;

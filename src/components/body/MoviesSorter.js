@@ -14,7 +14,7 @@ const MoviesSorter = ({ onSortChange, selectedSort }) => {
   return (
     <div className={styles.sort}>
       <p>Sort by </p>
-      <FormControl className={styles.sortForm}>
+      <FormControl className={styles['sort-form']}>
         <Select
           labelId="simple-select"
           id="simple-select"
