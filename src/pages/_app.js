@@ -1,13 +1,17 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
 
 import Layout from '../components/layout/Layout';
+import store from '../store/store';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <Layout>
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
     </Layout>
   );
 };

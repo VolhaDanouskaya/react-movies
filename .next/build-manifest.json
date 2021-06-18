@@ -29,10 +29,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/movies/[movieId]": [
+    "/movies": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/movies/[movieId].js"
+      "static/chunks/pages/movies.js"
     ]
   },
   "ampFirstPages": []
