@@ -4,21 +4,19 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 
 import Layout from '../components/layout/Layout';
-import store from '../store/store';
+import { wrapper } from '../store/store';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <Layout>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <Component {...pageProps} />
     </Layout>
   );
 };
 
 MyApp.propTypes = {
-  Component: PropTypes.element.isRequired,
+  Component: PropTypes.func.isRequired,
   pageProps: PropTypes.any.isRequired,
 };
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

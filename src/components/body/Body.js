@@ -32,10 +32,7 @@ const Body = ({ movies, loadMovies }) => {
   return (
     <Container className={styles.body} fixed>
       <div className={styles.submenu}>
-        <GenresFilter
-          onFilterClick={onFilterClick}
-          selectedFilter={currentFilter}
-        />
+        <GenresFilter onFilterClick={onFilterClick} selectedFilter={currentFilter} />
         <MoviesSorter onSortChange={onSortChange} selectedSort={currentSort} />
       </div>
       {!movies?.length ? (
@@ -66,7 +63,7 @@ Body.propTypes = {
       budget: PropTypes.number,
       revenue: PropTypes.number,
       runtime: PropTypes.number,
-    })
+    }),
   ).isRequired,
   loadMovies: PropTypes.func.isRequired,
 };
