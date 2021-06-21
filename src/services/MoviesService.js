@@ -30,7 +30,7 @@ class MoviesService {
   buildUrl = (filter, sort, query) => {
     let url = `${this.apiURL}?sortBy=${sort}&sortOrder=desc`;
     if (filter && filter !== 'All') {
-      url += `?filter=${filter}`;
+      url += `&filter=${filter}`;
     }
     if (query) {
       url += `&search=${query}&searchBy=title`;
