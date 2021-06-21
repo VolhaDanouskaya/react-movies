@@ -20,6 +20,7 @@ module.exports = {
       {
         singleQuote: true,
         parser: 'flow',
+        endOfLine: 'auto',
       },
     ],
     'max-len': [2, 120],

@@ -4,15 +4,7 @@ import PropTypes from 'prop-types';
 
 import MovieCard from './movieCard';
 
-const MovieList = ({ movies }) => (
-  <ul className="movie-list">
-    {movies?.map((movie) => (
-      <MovieCard key={movie?.id} movie={movie} />
-    ))}
-  </ul>
-);
-
-MovieList.propTypes = {
+const propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -30,5 +22,15 @@ MovieList.propTypes = {
     })
   ).isRequired,
 };
+
+const MovieList = ({ movies }) => (
+  <ul className="movie-list">
+    {movies?.map((movie) => (
+      <MovieCard key={movie?.id} movie={movie} />
+    ))}
+  </ul>
+);
+
+MovieList.propTypes = propTypes;
 
 export default MovieList;

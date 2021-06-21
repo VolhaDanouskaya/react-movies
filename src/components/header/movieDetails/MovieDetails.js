@@ -4,6 +4,28 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import './movieDetails.scss';
 
+const propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+    genres: PropTypes.arrayOf(PropTypes.string),
+    vote_average: PropTypes.number,
+    tagline: PropTypes.string,
+    vote_count: PropTypes.number,
+    overview: PropTypes.string,
+    budget: PropTypes.number,
+    revenue: PropTypes.number,
+    runtime: PropTypes.number,
+  }),
+  getMovie: PropTypes.func.isRequired,
+};
+
+const defaultProps = {
+  movie: null,
+};
+
 const MovieDetails = ({ movie, getMovie }) => {
   const { movieId } = useParams();
 
@@ -32,26 +54,7 @@ const MovieDetails = ({ movie, getMovie }) => {
   );
 };
 
-MovieDetails.defaultProps = {
-  movie: null,
-};
-
-MovieDetails.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    poster_path: PropTypes.string,
-    release_date: PropTypes.string,
-    genres: PropTypes.arrayOf(PropTypes.string),
-    vote_average: PropTypes.number,
-    tagline: PropTypes.string,
-    vote_count: PropTypes.number,
-    overview: PropTypes.string,
-    budget: PropTypes.number,
-    revenue: PropTypes.number,
-    runtime: PropTypes.number,
-  }),
-  getMovie: PropTypes.func.isRequired,
-};
+MovieDetails.propTypes = propTypes;
+MovieDetails.defaultProps = defaultProps;
 
 export default MovieDetails;

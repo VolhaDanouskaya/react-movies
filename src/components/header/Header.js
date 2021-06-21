@@ -16,6 +16,10 @@ import PropTypes from 'prop-types';
 import logo from '/public/images/logo.png';
 import './header.scss';
 
+const propTypes = {
+  addMovie: PropTypes.func.isRequired,
+};
+
 const Header = ({ addMovie }) => {
   const [openAdd, setOpenAdd] = useState(false);
   const history = useHistory();
@@ -65,8 +69,6 @@ const Header = ({ addMovie }) => {
   );
 };
 
-Header.propTypes = {
-  addMovie: PropTypes.func.isRequired,
-};
+Header.propTypes = propTypes;
 
 export default Header;

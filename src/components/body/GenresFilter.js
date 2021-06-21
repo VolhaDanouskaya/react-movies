@@ -3,9 +3,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './body.scss';
 
-const genres = ['All', 'Adventure', 'Comedy', 'Drama', 'Fantasy'];
+const propTypes = {
+  onFilterClick: PropTypes.func.isRequired,
+  selectedFilter: PropTypes.string.isRequired,
+};
 
 const GenresFilter = ({ onFilterClick, selectedFilter }) => {
+  const genres = ['All', 'Adventure', 'Comedy', 'Drama', 'Fantasy'];
   const [selected, setSelected] = useState(selectedFilter);
 
   return (
@@ -27,9 +31,6 @@ const GenresFilter = ({ onFilterClick, selectedFilter }) => {
   );
 };
 
-GenresFilter.propTypes = {
-  onFilterClick: PropTypes.func.isRequired,
-  selectedFilter: PropTypes.string.isRequired,
-};
+GenresFilter.propTypes = propTypes;
 
 export default GenresFilter;

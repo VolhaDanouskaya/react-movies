@@ -14,6 +14,12 @@ import PropTypes from 'prop-types';
 
 import { genresArray, validationSchema, MOVIE_FIELDS } from '../constants';
 
+const propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onAdd: PropTypes.func.isRequired,
+};
+
 const AddMovieDialog = ({ open, onAdd, onClose }) => {
   const [genres, setGenres] = useState([]);
 
@@ -177,10 +183,6 @@ const AddMovieDialog = ({ open, onAdd, onClose }) => {
   );
 };
 
-AddMovieDialog.propTypes = {
-  open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onAdd: PropTypes.func.isRequired,
-};
+AddMovieDialog.propTypes = propTypes;
 
 export default AddMovieDialog;

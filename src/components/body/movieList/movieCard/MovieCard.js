@@ -14,6 +14,25 @@ import UpdateMovieDialog from '../UpdateMovieDialog';
 
 import '../movies.scss';
 
+const propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+    genres: PropTypes.arrayOf(PropTypes.string),
+    vote_average: PropTypes.number,
+    tagline: PropTypes.string,
+    vote_count: PropTypes.number,
+    overview: PropTypes.string,
+    budget: PropTypes.number,
+    revenue: PropTypes.number,
+    runtime: PropTypes.number,
+  }).isRequired,
+  updateMovie: PropTypes.func.isRequired,
+  deleteMovie: PropTypes.func.isRequired,
+};
+
 const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDelete, setOpenDelete] = useState(false);
@@ -99,23 +118,6 @@ const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
   );
 };
 
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    poster_path: PropTypes.string,
-    release_date: PropTypes.string,
-    genres: PropTypes.arrayOf(PropTypes.string),
-    vote_average: PropTypes.number,
-    tagline: PropTypes.string,
-    vote_count: PropTypes.number,
-    overview: PropTypes.string,
-    budget: PropTypes.number,
-    revenue: PropTypes.number,
-    runtime: PropTypes.number,
-  }).isRequired,
-  updateMovie: PropTypes.func.isRequired,
-  deleteMovie: PropTypes.func.isRequired,
-};
+MovieCard.propTypes = propTypes;
 
 export default MovieCard;

@@ -12,6 +12,26 @@ import MovieList from './movieList/MovieList';
 import MoviesSorter from './MoviesSorter';
 import './body.scss';
 
+const propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
+      release_date: PropTypes.string,
+      genres: PropTypes.arrayOf(PropTypes.string),
+      vote_average: PropTypes.number,
+      tagline: PropTypes.string,
+      vote_count: PropTypes.number,
+      overview: PropTypes.string,
+      budget: PropTypes.number,
+      revenue: PropTypes.number,
+      runtime: PropTypes.number,
+    })
+  ).isRequired,
+  loadMovies: PropTypes.func.isRequired,
+};
+
 const Body = ({ movies, loadMovies }) => {
   const [currentFilter, setCurrentFilter] = useSessionStorage('filter');
   const [currentSort, setCurrentSort] = useSessionStorage('sort');
@@ -62,24 +82,6 @@ const Body = ({ movies, loadMovies }) => {
   );
 };
 
-Body.propTypes = {
-  movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      poster_path: PropTypes.string,
-      release_date: PropTypes.string,
-      genres: PropTypes.arrayOf(PropTypes.string),
-      vote_average: PropTypes.number,
-      tagline: PropTypes.string,
-      vote_count: PropTypes.number,
-      overview: PropTypes.string,
-      budget: PropTypes.number,
-      revenue: PropTypes.number,
-      runtime: PropTypes.number,
-    })
-  ).isRequired,
-  loadMovies: PropTypes.func.isRequired,
-};
+Body.propTypes = propTypes;
 
 export default Body;

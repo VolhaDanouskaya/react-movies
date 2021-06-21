@@ -14,8 +14,30 @@ import PropTypes from 'prop-types';
 
 import { genresArray, validationSchema, MOVIE_FIELDS } from '../../constants';
 
+const propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+    genres: PropTypes.arrayOf(PropTypes.string),
+    vote_average: PropTypes.number,
+    tagline: PropTypes.string,
+    url: PropTypes.string,
+    vote_count: PropTypes.number,
+    overview: PropTypes.string,
+    budget: PropTypes.number,
+    revenue: PropTypes.number,
+    runtime: PropTypes.number,
+  }).isRequired,
+  open: PropTypes.bool.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
+
 const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
   const [genres, setGenres] = useState(movie?.genres || []);
+
   const onCloseEditDialog = () => {
     onClose();
   };
@@ -150,25 +172,6 @@ const UpdateMovieDialog = ({ movie, open, onUpdate, onClose }) => {
   );
 };
 
-UpdateMovieDialog.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    poster_path: PropTypes.string,
-    release_date: PropTypes.string,
-    genres: PropTypes.arrayOf(PropTypes.string),
-    vote_average: PropTypes.number,
-    tagline: PropTypes.string,
-    url: PropTypes.string,
-    vote_count: PropTypes.number,
-    overview: PropTypes.string,
-    budget: PropTypes.number,
-    revenue: PropTypes.number,
-    runtime: PropTypes.number,
-  }).isRequired,
-  open: PropTypes.bool.isRequired,
-  onUpdate: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
+UpdateMovieDialog.propTypes = propTypes;
 
 export default UpdateMovieDialog;
