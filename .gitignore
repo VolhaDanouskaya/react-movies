@@ -1,3 +1,6 @@
 node_modules
 coverage
 .next
+.storybook
+taskbox
+src/stories

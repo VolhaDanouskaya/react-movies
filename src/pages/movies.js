@@ -1,31 +1,29 @@
 import React from 'react';
 
-import Body from '../components/body/Body';
+import Body from '../components/body';
 import Footer from '../components/footer/Footer';
 import Header from '../components/header';
+import MoviesService from '../services/MoviesService';
 import { loadMovies } from '../store/actions/movies';
 import { wrapper } from '../store/store';
-import { connect } from 'react-redux';
-import MoviesService from '../services/MoviesService';
 
-const MoviesPage = ({ movies }) => {
+const MoviesPage = () => {
   return (
     <>
       <Header />
-      <Body movies={movies} />
+      <Body />
       <Footer />
     </>
   );
 };
 
-// MoviesPage.getInitialProps = wrapper.getInitialPageProps((store) => () => {
-//   console.log();
-//   return store.dispatch(loadMovies());
-// });
+MoviesPage.getInitialProps = wrapper.getInitialPageProps((store) => () => {
+  store.dispatch(loadMovies());
+});
 
-MoviesPage.getInitialProps = async () => {
-  const movies = await MoviesService.fetchMovies();
-  return { movies: movies.data };
-};
+// MoviesPage.getInitialProps = async () => {
+//   const movies = await MoviesService.fetchMovies();
+//   return { movies: movies.data };
+// };
 
 export default MoviesPage;

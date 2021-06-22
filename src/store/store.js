@@ -1,6 +1,6 @@
+import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 
 import headerReducer from './reducers/header';
 import moviesReducer from './reducers/movies';
@@ -12,13 +12,16 @@ const sagaMiddleware = createSagaMiddleware();
 //   applyMiddleware(sagaMiddleware),
 // );
 
-const combinedReducer = combineReducers({ movies: moviesReducer, movie: headerReducer });
+const combinedReducer = combineReducers({
+  movies: moviesReducer,
+  movie: headerReducer,
+});
 
 const reducer = (state, action) => {
   if (action.type === HYDRATE) {
     const nextState = {
-      ...state, // use previous state
-      ...action.payload, // apply delta from hydration
+      ...state,
+      ...action.payload,
     };
     return nextState;
   }

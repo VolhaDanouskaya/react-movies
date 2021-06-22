@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 
 const useSessionStorage = (storageKey) => {
-  const [value, setValue] = useState(typeof window !== 'undefined' ? sessionStorage.getItem(storageKey) : 'All');
+  const [value, setValue] = useState(
+    typeof window !== 'undefined' ? sessionStorage.getItem(storageKey) : 'All'
+  );
 
   useEffect(() => {
     if (value) {
