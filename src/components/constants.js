@@ -28,3 +28,5 @@ export const validationSchema = yup.object({
   runtime: yup.number().required('Runtime is required'),
   genres: yup.array().min(1).required('Minimum one genre should be selected'),
 });
+
+export const DEFAULT_SORT = 'release_date';

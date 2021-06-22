@@ -5,11 +5,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import PropTypes from 'prop-types';
 
+import { DEFAULT_SORT } from '../constants';
+
 import styles from './body.module.scss';
 
 const MoviesSorter = ({ onSortChange, selectedSort }) => {
   if (!selectedSort) {
-    onSortChange('release_date');
+    onSortChange(DEFAULT_SORT);
   }
   return (
     <div className={styles.sort}>

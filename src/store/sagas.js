@@ -16,7 +16,13 @@ import {
   deleteMovieSuccess,
   deleteMovieFail,
 } from './actions/movies';
-import { LOAD_MOVIES, ADD_MOVIE, DELETE_MOVIE, UPDATE_MOVIE, GET_MOVIE_BY_ID } from './actions/types';
+import {
+  LOAD_MOVIES,
+  ADD_MOVIE,
+  DELETE_MOVIE,
+  UPDATE_MOVIE,
+  GET_MOVIE_BY_ID,
+} from './actions/types';
 
 function* getAllMovies({ filter, sort, query }) {
   try {

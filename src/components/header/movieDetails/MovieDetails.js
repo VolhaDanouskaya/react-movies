@@ -1,18 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
 import styles from './movieDetails.module.scss';
 
-const MovieDetails = ({ movie, getMovie }) => {
-  const router = useRouter();
-  const { movieId } = router.query;
-
-  useEffect(() => {
-    getMovie(Number(movieId));
-  }, [movieId, getMovie]);
-
+const MovieDetails = ({ movie }) => {
   return (
     <div className={styles['movie-details']}>
       <img src={movie?.poster_path} alt="" className={styles.poster} />
@@ -23,9 +15,7 @@ const MovieDetails = ({ movie, getMovie }) => {
         </div>
         <div className={styles.tagline}>{movie?.tagline}</div>
         <div className={styles['third-row']}>
-          <div className={styles['release-date']}>
-            {movie?.release_date?.split('-')[0]}
-          </div>
+          <div className={styles['release-date']}>{movie?.release_date?.split('-')[0]}</div>
           <div className={styles.runtime}>{movie?.runtime} min</div>
         </div>
         <div className={styles.overview}>{movie?.overview}</div>
@@ -53,7 +43,6 @@ MovieDetails.propTypes = {
     revenue: PropTypes.number,
     runtime: PropTypes.number,
   }),
-  getMovie: PropTypes.func.isRequired,
 };
 
 export default MovieDetails;

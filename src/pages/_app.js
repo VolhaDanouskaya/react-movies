@@ -1,7 +1,6 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
 
 import Layout from '../components/layout/Layout';
 import { wrapper } from '../store/store';
