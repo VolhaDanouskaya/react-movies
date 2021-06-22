@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
 import styles from './movieDetails.module.scss';
 
-const MovieDetails = ({ movie }) => {
+const MovieDetails = ({ movie, getMovie }) => {
+  const router = useRouter();
+  const { movieId } = router.query;
+
+  useEffect(() => {
+    getMovie(Number(movieId));
+  }, [movieId, getMovie]);
+
   return (
     <div className={styles['movie-details']}>
       <img src={movie?.poster_path} alt="" className={styles.poster} />
@@ -43,6 +51,7 @@ MovieDetails.propTypes = {
     revenue: PropTypes.number,
     runtime: PropTypes.number,
   }),
+  getMovie: PropTypes.func.isRequired,
 };
 
 export default MovieDetails;
