@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack serve",
-    "prod": "cross-env NODE_ENV=production webpack",
+    "prod": "cross-env NODE_ENV=production webpack serve",
     "lint": "eslint \"./src/**/*.{js,jsx}\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",

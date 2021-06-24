@@ -19,10 +19,11 @@ const propTypes = {
       budget: PropTypes.number,
       revenue: PropTypes.number,
       runtime: PropTypes.number,
-    })
+    }),
   ).isRequired,
 };
 
+// PATTERN: Container component
 const MovieList = ({ movies }) => (
   <ul className="movie-list">
     {movies?.map((movie) => (

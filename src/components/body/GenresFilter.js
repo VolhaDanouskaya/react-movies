@@ -8,6 +8,7 @@ const propTypes = {
   selectedFilter: PropTypes.string.isRequired,
 };
 
+// PATTERN: State hoisting
 const GenresFilter = ({ onFilterClick, selectedFilter }) => {
   const genres = ['All', 'Adventure', 'Comedy', 'Drama', 'Fantasy'];
   const [selected, setSelected] = useState(selectedFilter);

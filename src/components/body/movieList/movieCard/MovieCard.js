@@ -69,44 +69,26 @@ const MovieCard = ({ movie, updateMovie, deleteMovie }) => {
   return (
     <li className="movie-card">
       <Link to={`/movies/${movie?.id}`}>
-        <img src={movie?.poster_path} alt="" />
+        <img src={movie?.poster_path} alt={movie?.title} />
       </Link>
       <div className="movie-info">
         <div className="info-first-row">
           <p className="title">{movie?.title}</p>
-          <p className="movie-release-year">
-            {movie?.release_date?.split('-')[0]}
-          </p>
+          <p className="movie-release-year">{movie?.release_date?.split('-')[0]}</p>
         </div>
         <p className="genre">{movie?.genres?.join(', ')}</p>
       </div>
-      <IconButton
-        className="card-menu-icon"
-        aria-controls="simple-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
+      <IconButton className="card-menu-icon" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         <MoreVertIcon />
       </IconButton>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
+      <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
         <MenuItem onClick={onEditMenuItemClick} className="card-menu-item">
           edit
         </MenuItem>
         <MenuItem onClick={onDeleteMenuItemClick} className="card-menu-item">
           delete
         </MenuItem>
-        <UpdateMovieDialog
-          open={openEdit}
-          movie={movie}
-          onUpdate={onUpdateMovie}
-          onClose={() => setOpenEdit(false)}
-        />
+        <UpdateMovieDialog open={openEdit} movie={movie} onUpdate={onUpdateMovie} onClose={() => setOpenEdit(false)} />
         <DeleteMovieDialog
           open={openDelete}
           movieId={movie?.id}
