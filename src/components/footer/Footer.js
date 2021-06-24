@@ -8,7 +8,7 @@ import logo from '/public/images/logo.png';
 
 const Footer = () => (
   <Container className="footer" fixed>
-    <img className="logo-footer" src={logo} alt="" />
+    <img className="logo-footer" src={logo} alt="" width="150px" height="20px" />
   </Container>
 );
 
