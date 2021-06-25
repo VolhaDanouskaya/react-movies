@@ -38,7 +38,13 @@ const Header = ({ addMovie }) => {
       <Switch>
         <Route path="/movies/:movieId">
           <div className="subheader">
-            <img className="logo" src={logo} alt="" width="150px" height="20px" />
+            <img
+              className="logo"
+              src={logo}
+              alt=""
+              width="150px"
+              height="20px"
+            />
             <IconButton onClick={() => history.push('/')}>
               <SearchIcon fontSize="large" />
             </IconButton>
@@ -47,11 +53,26 @@ const Header = ({ addMovie }) => {
         </Route>
         <Route path="/">
           <div className="subheader">
-            <img className="logo" src={logo} alt="" width="150px" height="20px" />
-            <Button id="button-add-movie" variant="contained" size="large" onClick={onAddMovieClick}>
+            <img
+              className="logo"
+              src={logo}
+              alt=""
+              width="150px"
+              height="20px"
+            />
+            <Button
+              id="button-add-movie"
+              variant="contained"
+              size="large"
+              onClick={onAddMovieClick}
+            >
               + Add Movie
             </Button>
-            <AddMovieDialog open={openAdd} onAdd={onAddMovie} onClose={() => setOpenAdd(false)} />
+            <AddMovieDialog
+              open={openAdd}
+              onAdd={onAddMovie}
+              onClose={() => setOpenAdd(false)}
+            />
           </div>
           <SearchBar />
         </Route>

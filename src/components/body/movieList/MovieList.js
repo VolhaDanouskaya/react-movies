@@ -19,7 +19,7 @@ const propTypes = {
       budget: PropTypes.number,
       revenue: PropTypes.number,
       runtime: PropTypes.number,
-    }),
+    })
   ).isRequired,
 };
 
